@@ -67,3 +67,14 @@ int deleteIndexArrary(ziArray* a, int index)
     a->size--;
     return 0;
 }
+
+//remove an item in a specific position index
+int * fetchIndexArrary(ziArray* a, int index)
+{
+    if(index >= a->size)
+    {
+        printf("Fetch item out of index.\n");
+        return NULL;
+    }
+    return a->c_ptr[index];
+}

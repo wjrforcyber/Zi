@@ -11,3 +11,7 @@ add_test(NAME ArrayTestsGrow COMMAND arrayGrow)
 add_executable(arrayPush arrayPush.c)
 target_link_libraries(arrayPush ziArray)
 add_test(NAME ArrayTestsPush COMMAND arrayPush)
+
+add_executable(arrayDeleteIndex arrayDeleteIndex.c)
+target_link_libraries(arrayDeleteIndex ziArray)
+add_test(NAME ArrayTestsDeleteIndex COMMAND arrayDeleteIndex)

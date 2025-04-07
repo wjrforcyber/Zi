@@ -8,5 +8,6 @@ int main()
     assert(initArray(ptr, 8) == 0);
     assert(pushArray(ptr, &item) == 0);
     assert(ptr->size == 1);
+    assert(clearArray(ptr) == 0);
     return 0;
 }
