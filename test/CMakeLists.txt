@@ -15,3 +15,15 @@ add_test(NAME ArrayTestsPush COMMAND arrayPush)
 add_executable(arrayDeleteIndex arrayDeleteIndex.c)
 target_link_libraries(arrayDeleteIndex ziArray)
 add_test(NAME ArrayTestsDeleteIndex COMMAND arrayDeleteIndex)
+
+add_executable(arraySetIndex arraySetIndex.c)
+target_link_libraries(arraySetIndex ziArray)
+add_test(NAME ArrayTestsSetIndex COMMAND arraySetIndex)
+
+add_executable(arrayInsertIndex arrayInsertIndex.c)
+target_link_libraries(arrayInsertIndex ziArray)
+add_test(NAME ArrayTestsInsertIndex COMMAND arrayInsertIndex)
+
+add_executable(arrayChangeIndex arrayChangeIndex.c)
+target_link_libraries(arrayChangeIndex ziArray)
+add_test(NAME ArrayTestsChangeIndex COMMAND arrayChangeIndex)

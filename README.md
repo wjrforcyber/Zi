@@ -2,7 +2,7 @@
 ![Zi Lib CTests](https://github.com/wjrforcyber/Zi/actions/workflows/main.yml/badge.svg)
 
 ## Introduction
-C Zi library, named after "子鼠", is one of the Synthesis and Verification Library of Zodiac Program.
+C Zi library, named after "子鼠", is one of the Synthesis and Verification Libraries of Zodiac Program.
 
 Zi contains most of the basic data structures implemented in C, which will help algorithm implementation become easier.
 

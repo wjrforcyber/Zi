@@ -48,6 +48,37 @@ int pushArray(ziArray* a, void* item)
     return 0;
 }
 
+//set a value on a specific position
+int setIndexArray(ziArray* a, int index, void * item)
+{
+    if(index > a->cap)
+    {
+        growArray(a, INCREASE_RATE * a->size);
+    }
+    a->c_ptr[index] = item;
+    return 0;
+}
+
+//insert to a index of an array
+int insertIndexArray(ziArray* a, int index, void * item)
+{
+    //check the capacity
+    if(a->size == a->cap)
+    {
+        growArray(a, INCREASE_RATE * a->size);
+    }
+    int j = 0;
+    j = a->size - 1;
+    while(j >= index)
+    {
+        a->c_ptr[j + 1] = a->c_ptr[j];
+        j--;
+    }
+    a->c_ptr[index] = item;
+    a->size++;
+    return 0;
+}
+
 //remove an item in a specific position index
 int deleteIndexArray(ziArray* a, int index)
 {
@@ -77,4 +108,16 @@ int * fetchIndexArray(ziArray* a, int index)
         return NULL;
     }
     return a->c_ptr[index];
+}
+
+//change an item in a specifc position
+int changeIndexArray(ziArray* a, int index, void *item)
+{
+    if(index > a->size - 1)
+    {
+        printf("The item is out of index.\n");
+        return 1;
+    }
+    a->c_ptr[index] = item;
+    return 0;
 }
