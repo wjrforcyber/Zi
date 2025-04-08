@@ -49,7 +49,7 @@ int pushArray(ziArray* a, void* item)
 }
 
 //remove an item in a specific position index
-int deleteIndexArrary(ziArray* a, int index)
+int deleteIndexArray(ziArray* a, int index)
 {
     int i = 0;
     for(i = 0; i < a->size; i++)
@@ -69,7 +69,7 @@ int deleteIndexArrary(ziArray* a, int index)
 }
 
 //remove an item in a specific position index
-int * fetchIndexArrary(ziArray* a, int index)
+int * fetchIndexArray(ziArray* a, int index)
 {
     if(index >= a->size)
     {

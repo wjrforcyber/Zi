@@ -17,5 +17,5 @@ int initArray(ziArray* a, const int size);
 int clearArray(ziArray* a);
 int growArray(ziArray* a, size_t capTarget);
 int pushArray(ziArray* a, void* item);
-int deleteIndexArrary(ziArray* a, int index);
-int * fetchIndexArrary(ziArray* a, int index);
+int deleteIndexArray(ziArray* a, int index);
+int * fetchIndexArray(ziArray* a, int index);
