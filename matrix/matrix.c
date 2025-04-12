@@ -1,0 +1,102 @@
+#include "matrix.h"
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//read from string
+/*
+Predefined matrix format as
+[1,2,3], which is one dimension, a vector;
+[[1,2,3,4],[5,6,7,8]], which is two dimension;
+[[[1,2],[3,4]],[[5,6],[7,8]]], which is three dimension.
+*/
+
+int initMatrix(matrix* mI)
+{
+    mI->dim = 0;
+    mI->row = 0;
+    mI->col = 0;
+    if(initArray(&mI->m, 8) != 0)
+    {
+        printf("Initialization of matrix failed.\n");
+    }
+    return 0;
+}
+
+//Not a good one
+int readMatrix(matrix* mI, char* mS)
+{
+    initMatrix(mI);
+    //index indicates wheather it is a digit
+    char* ptr = mS;
+    char* ptr_r;
+    char* preC;
+    int endFlag = 0;
+    int sArray[100];
+    int index = 0;
+    int dimFlag = 0;
+    int colFlag = 0;
+
+    while(endFlag == 0)
+    {
+        while(isdigit(*ptr) == 0)
+        {
+            //check if it is the [ in the begining
+            if(*ptr == '[' && dimFlag == 0)
+            {
+                mI->dim++;
+            }
+            //record the previous char when it is [
+            if(*ptr == '[')
+            {
+                preC = ptr;
+            }
+            if(*ptr == ',' && colFlag == 0)
+            {
+                mI->col++;
+            }
+            if(*ptr == ']' && colFlag == 0)
+            {
+                mI->col++;
+                colFlag = 1;
+            }
+            ptr++;
+            if(*ptr != '\0')
+            {
+                continue;
+            }
+            endFlag = 1;
+            break;
+        }
+        if(endFlag == 1)
+        {
+            break;
+        }
+        //no longer update the dim when the first time meets a digit
+        dimFlag = 1;
+        //tmp save the current number
+        char buf[10] = {0};
+        ptr_r = ptr;
+        while(isdigit(*ptr_r) != 0)
+        {
+            ptr_r++;
+        }
+        strncpy(buf, ptr, ptr_r - ptr);
+        int num = atoi(buf);
+        sArray[index] = num;
+        index++;
+        //check if the preC is [
+        if(*preC == '[')
+        {
+            mI->row++;
+        }
+        preC = ptr_r;
+        ptr = ptr_r;
+    }
+    for(int i = 0; i < index; i++)
+    {
+        pushArray(&mI->m, &sArray[i]);
+    }
+    showDigitsArray(&mI->m);
+    return 0;
+}

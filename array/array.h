@@ -22,3 +22,4 @@ int insertIndexArray(ziArray* a, int index, void * item);
 int deleteIndexArray(ziArray* a, int index);
 int * fetchIndexArray(ziArray* a, int index);
 int changeIndexArray(ziArray* a, int index, void *item);
+int showDigitsArray(ziArray* a);

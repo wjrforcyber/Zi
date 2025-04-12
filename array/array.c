@@ -13,7 +13,7 @@ int initArray(ziArray* a, const int arraySize)
     a->cap = INCREASE_RATE * arraySize;
     a->size = 0;
     a->typeSize = 0;
-    a->c_ptr = (void *)malloc(a->cap);
+    a->c_ptr = calloc(a->cap, sizeof(char *));
     return 0;
 }
 
@@ -119,5 +119,29 @@ int changeIndexArray(ziArray* a, int index, void *item)
         return 1;
     }
     a->c_ptr[index] = item;
+    return 0;
+}
+
+//show digits array
+int showDigitsArray(ziArray* a)
+{
+    if(a->size == 0)
+    {
+        printf("Array size is 0, nothing to print.\n");
+        return 1;
+    }
+    printf("Warning: Only proper on int type.\n");
+    int index = 0;
+    printf("Array contains:\n");
+    for(index = 0; index < a->size; index++)
+    {
+        if(index == a->size - 1)
+        {
+            printf("%d", *fetchIndexArray(a, index));
+        }
+        else {
+            printf("%d ", *fetchIndexArray(a, index));
+        }
+    }
     return 0;
 }

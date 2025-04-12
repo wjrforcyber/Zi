@@ -1,4 +1,5 @@
 include_directories(${CMAKE_SOURCE_DIR}/array)
+include_directories(${CMAKE_SOURCE_DIR}/matrix)
 add_executable(arrayInitAndClear arrayInitAndClear.c)
 
 target_link_libraries(arrayInitAndClear ziArray)
@@ -27,3 +28,11 @@ add_test(NAME ArrayTestsInsertIndex COMMAND arrayInsertIndex)
 add_executable(arrayChangeIndex arrayChangeIndex.c)
 target_link_libraries(arrayChangeIndex ziArray)
 add_test(NAME ArrayTestsChangeIndex COMMAND arrayChangeIndex)
+
+add_executable(arrayShowDigits arrayShowDigits.c)
+target_link_libraries(arrayShowDigits ziArray)
+add_test(NAME ArrayTestsShowDigits COMMAND arrayShowDigits)
+
+add_executable(matrixRead matrixRead.c)
+target_link_libraries(matrixRead ziArray ziMatrix)
+add_test(NAME MatrixTestsMatrixRead COMMAND matrixRead)
