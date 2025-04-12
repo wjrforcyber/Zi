@@ -34,5 +34,5 @@ target_link_libraries(arrayShowDigits ziArray)
 add_test(NAME ArrayTestsShowDigits COMMAND arrayShowDigits)
 
 add_executable(matrixRead matrixRead.c)
-target_link_libraries(matrixRead ziArray ziMatrix)
+target_link_libraries(matrixRead ziMatrix)
 add_test(NAME MatrixTestsMatrixRead COMMAND matrixRead)
