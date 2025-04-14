@@ -100,3 +100,31 @@ int readMatrix(matrix* mI, char* mS)
     showDigitsArray(&mI->m);
     return 0;
 }
+
+//fetch the row with the index
+int fetchMatrixRow(matrix* mI, int rowIndex, ziArray* rowArray)
+{
+    if(rowIndex > mI->row - 1)
+    {
+        printf("Row index exceeded.\n");
+    }
+    for(int i = 0; i < mI->col; i++)
+    {
+        pushArray(rowArray, fetchIndexArray(&mI->m, rowIndex * mI->col + i));
+    }
+    return 0;
+}
+
+//fetch the matrix column
+int fetchMatrixCol(matrix* mI, int colIndex, ziArray* colArray)
+{
+    if(colIndex > mI->col - 1)
+    {
+        printf("Column index exceeded.\n");
+    }
+    for(int i = 0 ; i < mI->row; i++)
+    {
+        pushArray(colArray, fetchIndexArray(&mI->m, i * mI->col + colIndex));
+    }
+    return 0;
+}

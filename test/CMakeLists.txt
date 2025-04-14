@@ -29,6 +29,10 @@ add_executable(arrayChangeIndex arrayChangeIndex.c)
 target_link_libraries(arrayChangeIndex ziArray)
 add_test(NAME ArrayTestsChangeIndex COMMAND arrayChangeIndex)
 
+add_executable(arrayCheckIdentity arrayCheckIdentity.c)
+target_link_libraries(arrayCheckIdentity ziArray)
+add_test(NAME ArrayTestsCheckIdentity COMMAND arrayCheckIdentity)
+
 add_executable(arrayShowDigits arrayShowDigits.c)
 target_link_libraries(arrayShowDigits ziArray)
 add_test(NAME ArrayTestsShowDigits COMMAND arrayShowDigits)
@@ -36,3 +40,7 @@ add_test(NAME ArrayTestsShowDigits COMMAND arrayShowDigits)
 add_executable(matrixRead matrixRead.c)
 target_link_libraries(matrixRead ziMatrix)
 add_test(NAME MatrixTestsMatrixRead COMMAND matrixRead)
+
+add_executable(matrixFetchMatrixRowCol matrixFetchMatrixRowCol.c)
+target_link_libraries(matrixFetchMatrixRowCol ziMatrix)
+add_test(NAME MatrixTestsMatrixFetchMatrixRowCol COMMAND matrixFetchMatrixRowCol)

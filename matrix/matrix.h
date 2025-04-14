@@ -11,3 +11,5 @@ struct matrix_
 
 
 int readMatrix(matrix* mI, char * mS);
+int fetchMatrixRow(matrix* mI, int rowIndex, ziArray* rowArray);
+int fetchMatrixCol(matrix* mI, int colIndex, ziArray* colArray);

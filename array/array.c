@@ -122,6 +122,24 @@ int changeIndexArray(ziArray* a, int index, void *item)
     return 0;
 }
 
+//check the identity of two arrays
+int checkIdentityArray(ziArray* a, ziArray* b)
+{
+    if(a->size != b->size)
+    {
+        printf("Two arrays have different size.\n");
+        return 1;
+    }
+    for(int i = 0; i < a->size; i++)
+    {
+        if(*fetchIndexArray(a, i) != *fetchIndexArray(b, i))
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 //show digits array
 int showDigitsArray(ziArray* a)
 {
