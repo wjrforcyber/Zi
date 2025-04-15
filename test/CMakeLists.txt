@@ -44,3 +44,7 @@ add_test(NAME MatrixTestsMatrixRead COMMAND matrixRead)
 add_executable(matrixFetchMatrixRowCol matrixFetchMatrixRowCol.c)
 target_link_libraries(matrixFetchMatrixRowCol ziMatrix)
 add_test(NAME MatrixTestsMatrixFetchMatrixRowCol COMMAND matrixFetchMatrixRowCol)
+
+add_executable(matrixAddMatrix matrixAddMatrix.c)
+target_link_libraries(matrixAddMatrix ziMatrix)
+add_test(NAME MatrixTestsMatrixAddMatrix COMMAND matrixAddMatrix)

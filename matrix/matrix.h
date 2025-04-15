@@ -9,7 +9,8 @@ struct matrix_
     ziArray m;
 };
 
-
+int initMatrix(matrix* mI);
 int readMatrix(matrix* mI, char * mS);
 int fetchMatrixRow(matrix* mI, int rowIndex, ziArray* rowArray);
 int fetchMatrixCol(matrix* mI, int colIndex, ziArray* colArray);
+matrix* addMatrix(matrix* m0, matrix* m1);

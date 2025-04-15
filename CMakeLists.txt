@@ -10,7 +10,7 @@ ADD_LIBRARY( ziArray STATIC array/array.c )
 include_directories(array)
 
 # array lib
-ADD_LIBRARY( ziMatrix STATIC matrix/matrix.c array/array.c)
+ADD_LIBRARY( ziMatrix STATIC matrix/matrix.c matrix/matrixCal.c array/array.c)
 include_directories(matrix)
 
 include(CTest)

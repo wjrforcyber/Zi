@@ -1,5 +1,7 @@
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "array.h"
 
 //initialize an array
@@ -25,6 +27,15 @@ int clearArray(ziArray *a)
     a->cap = 0;
     a->size = 0;
     a->typeSize = 0;
+    return 0;
+}
+
+//clear an array content
+int clearExtendArray(ziArray *a)
+{
+    free(a->c_ptr[0]);
+    free(a->c_ptr);
+    free(a);
     return 0;
 }
 
@@ -140,6 +151,42 @@ int checkIdentityArray(ziArray* a, ziArray* b)
     return 0;
 }
 
+//check the identity of two arrays
+ziArray* addArray(ziArray* a, ziArray* b)
+{
+    ziArray* res = (ziArray*)malloc(sizeof(ziArray));
+    initArray(res, 8);
+    //res->size = a->size;
+    int* res_ini = (int *)malloc(sizeof(int) * a->size);
+    memset(res_ini, 0, sizeof(int)*a->size);
+    for(int i = 0; i < a->size; i++)
+    {
+        pushArray(res, &res_ini[i]);
+    }
+
+    if(a->size != b->size)
+    {
+        printf("Two arrays have different size.\n");
+        free(res_ini);
+        clearArray(res);
+        return NULL;
+    }
+    for(int i = 0; i < a->size; i++)
+    {
+        *fetchIndexArray(res, i) = *fetchIndexArray(a, i) + *fetchIndexArray(b, i);
+    }
+    return res;
+}
+
+int extendArray(ziArray* ori, ziArray* extra)
+{
+    for(int i = 0; i < extra->size; i++)
+    {
+        pushArray(ori, fetchIndexArray(extra, i));
+    }
+    return 0;
+}
+
 //show digits array
 int showDigitsArray(ziArray* a)
 {
@@ -155,7 +202,7 @@ int showDigitsArray(ziArray* a)
     {
         if(index == a->size - 1)
         {
-            printf("%d", *fetchIndexArray(a, index));
+            printf("%d\n", *fetchIndexArray(a, index));
         }
         else {
             printf("%d ", *fetchIndexArray(a, index));

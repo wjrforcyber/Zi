@@ -19,6 +19,7 @@ int initMatrix(matrix* mI)
     if(initArray(&mI->m, 8) != 0)
     {
         printf("Initialization of matrix failed.\n");
+        return 1;
     }
     return 0;
 }
@@ -32,7 +33,8 @@ int readMatrix(matrix* mI, char* mS)
     char* ptr_r;
     char* preC;
     int endFlag = 0;
-    int sArray[100];
+    //int sArray[100];
+    int *sArray = (int *)malloc(sizeof(int) * 100);
     int index = 0;
     int dimFlag = 0;
     int colFlag = 0;
@@ -92,6 +94,10 @@ int readMatrix(matrix* mI, char* mS)
         }
         preC = ptr_r;
         ptr = ptr_r;
+    }
+    for(int i = 0 ; i < index; i ++)
+    {
+        printf("sArray %d is %d \n", index, sArray[i]);
     }
     for(int i = 0; i < index; i++)
     {
