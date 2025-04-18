@@ -48,3 +48,50 @@ matrix* addMatrix(matrix* m0, matrix* m1)
     }
     return mR;
 }
+
+
+int productCheck(matrix* m0, matrix* m1)
+{
+    if(m0->col != m1->row)
+    {
+        printf("Can't perform product due to wrong dimension.\n");
+        return 1;
+    }
+    return 0;
+}
+//matrix product
+matrix* productMatrix(matrix* m0, matrix* m1)
+{
+    int i = 0;
+    int j = 0;
+    matrix* mR = (matrix *)malloc(sizeof(matrix));
+    if(initMatrixAttri(mR, 2, m0->row, m1->col) == 1)
+    {
+        free(mR);
+        return NULL;
+    }
+    if(productCheck(m0, m1) == 1)
+    {
+        free(mR);
+        return NULL;
+    }
+    int *res = malloc(sizeof(int) * (mR->row & mR->col));
+    MatrixForEachItem(mR, i, j)
+    {
+        ziArray r0;
+        initArray(&r0, 8);
+        ziArray r1;
+        initArray(&r1, 8);
+        fetchMatrixRow(m0, i, &r0);
+        fetchMatrixCol(m1, j, &r1);
+        res[i * mR->row + j] = productIntArray(&r0, &r1);
+        //*fetchIndexArray(&mR->m, i * mR->row + j) = productIntArray(&r0, &r1);
+        clearArray(&r0);
+        clearArray(&r1);
+    }
+    MatrixForEachItem(mR, i, j)
+    {
+        pushArray(&mR->m, &res[i * mR->row + j]);
+    }
+    return mR;
+}

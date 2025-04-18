@@ -178,6 +178,26 @@ ziArray* addArray(ziArray* a, ziArray* b)
     return res;
 }
 
+//array product
+int productIntArray(ziArray* a, ziArray* b)
+{
+    int i = 0;
+    int res = 0;
+    if(a->size != b->size)
+    {
+        printf("Two array have different size.\n");
+        return 1;
+    }
+    ArrayForEachItem(a, i)
+    {
+        ArrayForEachItem(b, i)
+        {
+            res += (*fetchIndexArray(a, i)) * (*fetchIndexArray(b, i));
+        }
+    }
+    return res;
+}
+
 int extendArray(ziArray* ori, ziArray* extra)
 {
     for(int i = 0; i < extra->size; i++)

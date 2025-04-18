@@ -25,5 +25,9 @@ int * fetchIndexArray(ziArray* a, int index);
 int changeIndexArray(ziArray* a, int index, void *item);
 int checkIdentityArray(ziArray* a, ziArray* b);
 ziArray* addArray(ziArray* a, ziArray* b);
+int productIntArray(ziArray* a, ziArray* b);
 int extendArray(ziArray* ori, ziArray* extra);
 int showDigitsArray(ziArray* a);
+
+#define ArrayForEachItem( a, i ) \
+    for( i = 0; i < a->size; i++)

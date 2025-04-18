@@ -24,6 +24,19 @@ int initMatrix(matrix* mI)
     return 0;
 }
 
+int initMatrixAttri(matrix *mI, int dim, int row, int col)
+{
+    mI->dim = dim;
+    mI->row = row;
+    mI->col = col;
+    if(initArray(&mI->m, row * col) != 0)
+    {
+        printf("Initialization of matix with attributes failed.\n");
+        return 1;
+    }
+    return 0;
+}
+
 //Not a good one
 int readMatrix(matrix* mI, char* mS)
 {
