@@ -29,9 +29,20 @@ int initMatrixAttri(matrix *mI, int dim, int row, int col)
     mI->dim = dim;
     mI->row = row;
     mI->col = col;
-    if(initArray(&mI->m, row * col) != 0)
+    if(initArray(&mI->m, row * col / INCREASE_RATE) != 0)
     {
         printf("Initialization of matix with attributes failed.\n");
+        return 1;
+    }
+    return 0;
+}
+
+//clear matrix
+int clearMatrix(matrix* m)
+{
+    if(clearArray(&m->m) != 0)
+    {
+        printf("Failed to clear matrix array.\n");
         return 1;
     }
     return 0;
@@ -146,4 +157,15 @@ int fetchMatrixCol(matrix* mI, int colIndex, ziArray* colArray)
         pushArray(colArray, fetchIndexArray(&mI->m, i * mI->col + colIndex));
     }
     return 0;
+}
+
+//get the int item in specific index
+int* getMatrixIntItemIndex(matrix* mI, int rowIndex, int colIndex)
+{
+    if(rowIndex > mI->row || colIndex > mI->col)
+    {
+        printf("Index of row or col is exceeded.\n");
+        return NULL;
+    }
+    return fetchIndexArray(&mI->m, rowIndex * mI->col + colIndex);
 }
