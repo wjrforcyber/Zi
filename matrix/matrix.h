@@ -19,6 +19,7 @@ int* getMatrixItemIndex(matrix* mI, int rowIndex, int colIndex);
 matrix* addMatrix(matrix* m0, matrix* m1);
 matrix* productMatrix(matrix* m0, matrix* m1);
 matrix* concatMatrixLROutPlace(matrix* m0, matrix* m1);
+matrix* concatMatrixUDOutPlace(matrix* m0, matrix* m1);
 int checkIdentityMatrix(matrix* m0, matrix* m1);
 
 #define MatrixForEachItem( m, i, j ) \

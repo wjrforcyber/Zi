@@ -60,3 +60,7 @@ add_test(NAME MatrixTestsMatrixProductMatrix COMMAND matrixProductMatrix)
 add_executable(matrixConcatMatrixLROutPlace matrixConcatMatrixLROutPlace.c)
 target_link_libraries(matrixConcatMatrixLROutPlace ziMatrix)
 add_test(NAME MatrixTestsMatrixConcatMatrixLROutPlace COMMAND matrixConcatMatrixLROutPlace)
+
+add_executable(matrixConcatMatrixUDOutPlace matrixConcatMatrixUDOutPlace.c)
+target_link_libraries(matrixConcatMatrixUDOutPlace ziMatrix)
+add_test(NAME MatrixTestsMatrixConcatMatrixUDOutPlace COMMAND matrixConcatMatrixUDOutPlace)

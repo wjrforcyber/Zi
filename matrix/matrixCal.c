@@ -130,6 +130,7 @@ matrix* nTimesMatrixOutplace(matrix* m0, int n)
     return 0;
 }
 
+//check if two matrix can be concatenate left and right
 int checkConcatLRValidity(matrix* m0, matrix* m1)
 {
     //check both matrix has same row number
@@ -140,6 +141,7 @@ int checkConcatLRValidity(matrix* m0, matrix* m1)
     }
     return 0;
 }
+//concatenate left and right matrix
 matrix* concatMatrixLROutPlace(matrix* m0, matrix* m1)
 {
     int i = 0;
@@ -162,6 +164,52 @@ matrix* concatMatrixLROutPlace(matrix* m0, matrix* m1)
         for(j = m0->col; j < new_col; j++)
         {
             resArray[i * new_col + j] = *getMatrixItemIndex(m0, i, j - m0->col);
+        }
+    }
+    MatrixForEachItem(res, i, j)
+    {
+        pushArray(&res->m, &resArray[i * new_col + j]);
+    }
+    return res;
+}
+
+//check if two matrix can be concatenate up and down
+int checkConcatUDValidity(matrix* m0, matrix* m1)
+{
+    //check both matrix has same row number
+    if(m0->col != m1->col)
+    {
+        printf("Two matrix has different number of col number");
+        return 1;
+    }
+    return 0;
+}
+//concatenate left and right matrix
+matrix* concatMatrixUDOutPlace(matrix* m0, matrix* m1)
+{
+    int i = 0;
+    int j = 0;
+    int new_col = m0->col;
+    int new_row = m0->row + m1->row;
+    if(checkConcatUDValidity(m0, m1) != 0)
+    {
+        return NULL;
+    }
+    matrix * res = (matrix *)malloc(sizeof(matrix));
+    initMatrixAttri(res, 2, new_row, new_col);
+    int *resArray = malloc(sizeof(int) * (new_row * new_col));
+    for(i = 0; i < m0->row; i++)
+    {
+        for(j = 0; j < new_col; j++)
+        {
+            resArray[i * new_col + j] = *getMatrixItemIndex(m0, i, j);
+        }
+    }
+    for(i = m0->row; i < new_row; i++)
+    {
+        for(j = 0; j < new_col; j++)
+        {
+            resArray[i * new_col + j] = *getMatrixItemIndex(m0, i - m0->row, j);
         }
     }
     MatrixForEachItem(res, i, j)
