@@ -231,6 +231,49 @@ matrix* concatMatrixUDOutPlace(matrix* m0, matrix* m1)
     return res;
 }
 
+//Kronecker product
+matrix* kProductMatrix(matrix* m0, matrix* m1)
+{
+    int i = 0;
+    int j = 0;
+    int new_col = m0->col * m1->col;
+    int new_row = m0->row * m1->row;
+    matrix * res = (matrix *)malloc(sizeof(matrix));
+    if(initMatrixAttri(res, 2, new_row, new_col)!=0)
+    {
+        free(res);
+        return NULL;
+    }
+    //int *resArray = malloc(sizeof(int) * (new_row * new_col));
+    
+    matrix ** m_res = malloc(sizeof(matrix *) * (m0->row * m0->col));
+    MatrixForEachItem(m0, i, j)
+    {
+        int n = *getMatrixItemIndex(m0, i ,j);
+        matrix *nEach = nTimesMatrixOutplace(m1, n);
+        m_res[i * m0->col + j] = nEach;
+    }
+    
+    matrix ** m_rows = malloc(sizeof(matrix *) * m0->row);
+    
+    for(i = 0; i < m0->row; i++)
+    {
+        matrix * nEach = m_res[i * m0->col];
+        for(j = 1; j < m0->col; j++)
+        {
+            matrix* mR = m_res[i * m0->col + j];
+            nEach = concatMatrixLROutPlace(nEach, mR);
+        }
+        m_rows[i] = nEach;
+    }
+    matrix * k_res = m_rows[0];
+    for(i = 1; i < m0->row; i++)
+    {
+        k_res = concatMatrixUDOutPlace(k_res, m_rows[i]);
+    }
+    return k_res;
+}
+
 //check matix identity
 int checkIdentityMatrix(matrix* m0, matrix* m1)
 {

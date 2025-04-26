@@ -27,3 +27,7 @@ add_test(NAME MatrixTestsMatrixConcatMatrixUDOutPlace COMMAND matrixConcatMatrix
 add_executable(matrixNtimesMatrixOutplace matrixNtimesMatrixOutplace.c)
 target_link_libraries(matrixNtimesMatrixOutplace ziMatrix)
 add_test(NAME MatrixTestsMatrixNtimesMatrixOutplace COMMAND matrixNtimesMatrixOutplace)
+
+add_executable(matrixKProductMatrix matrixKProductMatrix.c)
+target_link_libraries(matrixKProductMatrix ziMatrix)
+add_test(NAME MatrixTestsMatrixKProductMatrix COMMAND matrixKProductMatrix)

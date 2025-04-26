@@ -121,7 +121,7 @@ int readMatrix(matrix* mI, char* mS)
     }
     for(int i = 0 ; i < index; i ++)
     {
-        printf("sArray %d is %d \n", index, sArray[i]);
+        printf("sArray %d is %d \n", i, sArray[i]);
     }
     for(int i = 0; i < index; i++)
     {

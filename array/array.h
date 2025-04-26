@@ -14,6 +14,7 @@ struct ziArray_
 
 //array.c
 int initArray(ziArray* a, const int size);
+int initArrayFillZero(ziArray* a, const int fillSize);
 int clearArray(ziArray* a);
 int clearExtendArray(ziArray *a);
 int growArray(ziArray* a, size_t capTarget);

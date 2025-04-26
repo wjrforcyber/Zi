@@ -19,6 +19,18 @@ int initArray(ziArray* a, const int arraySize)
     return 0;
 }
 
+//initialize an array
+int initArrayFillZero(ziArray* a, const int fillSize)
+{
+    int* zeroFill = (int *)malloc(sizeof(int) * fillSize);
+    memset(zeroFill, 0, fillSize);
+    for(int i = 0; i < fillSize; i++)
+    {
+        pushArray(a, &zeroFill[i]);
+    }
+    return 0;
+}
+
 //clear an array content
 int clearArray(ziArray *a)
 {
@@ -42,7 +54,7 @@ int clearExtendArray(ziArray *a)
 //growArray to a target capacity
 int growArray(ziArray* a, const size_t capTarget)
 {
-    a->c_ptr = realloc(a->c_ptr, capTarget);
+    a->c_ptr = realloc(a->c_ptr, capTarget * sizeof(char *));
     a->cap = capTarget;
     return 0;
 }
