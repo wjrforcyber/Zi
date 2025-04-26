@@ -1,0 +1,29 @@
+include_directories(${CMAKE_SOURCE_DIR}/matrix)
+
+add_executable(matrixRead matrixRead.c)
+target_link_libraries(matrixRead ziMatrix)
+add_test(NAME MatrixTestsMatrixRead COMMAND matrixRead)
+
+add_executable(matrixFetchMatrixRowCol matrixFetchMatrixRowCol.c)
+target_link_libraries(matrixFetchMatrixRowCol ziMatrix)
+add_test(NAME MatrixTestsMatrixFetchMatrixRowCol COMMAND matrixFetchMatrixRowCol)
+
+add_executable(matrixAddMatrix matrixAddMatrix.c)
+target_link_libraries(matrixAddMatrix ziMatrix)
+add_test(NAME MatrixTestsMatrixAddMatrix COMMAND matrixAddMatrix)
+
+add_executable(matrixProductMatrix matrixProductMatrix.c)
+target_link_libraries(matrixProductMatrix ziMatrix)
+add_test(NAME MatrixTestsMatrixProductMatrix COMMAND matrixProductMatrix)
+
+add_executable(matrixConcatMatrixLROutPlace matrixConcatMatrixLROutPlace.c)
+target_link_libraries(matrixConcatMatrixLROutPlace ziMatrix)
+add_test(NAME MatrixTestsMatrixConcatMatrixLROutPlace COMMAND matrixConcatMatrixLROutPlace)
+
+add_executable(matrixConcatMatrixUDOutPlace matrixConcatMatrixUDOutPlace.c)
+target_link_libraries(matrixConcatMatrixUDOutPlace ziMatrix)
+add_test(NAME MatrixTestsMatrixConcatMatrixUDOutPlace COMMAND matrixConcatMatrixUDOutPlace)
+
+add_executable(matrixNtimesMatrixOutplace matrixNtimesMatrixOutplace.c)
+target_link_libraries(matrixNtimesMatrixOutplace ziMatrix)
+add_test(NAME MatrixTestsMatrixNtimesMatrixOutplace COMMAND matrixNtimesMatrixOutplace)
