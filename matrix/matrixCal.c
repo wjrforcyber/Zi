@@ -117,8 +117,12 @@ matrix* nTimesMatrixOutplace(matrix* m0, int n)
     int i = 0;
     int j = 0;
     matrix * res = (matrix *)malloc(sizeof(matrix));
-    initMatrix(res);
-    int *resArray = malloc(sizeof(int) * (m0->m.size));
+    if(initMatrixAttri(res, 2, m0->row, m0->col) != 0)
+    {
+        free(res);
+        return NULL;
+    }
+    int *resArray = malloc(sizeof(int) * (m0->row * m0->col));
     MatrixForEachItem(m0, i, j)
     {
         resArray[i*m0->col + j] = n * (*getMatrixItemIndex(m0, i, j));
@@ -127,7 +131,7 @@ matrix* nTimesMatrixOutplace(matrix* m0, int n)
     {
         pushArray(&res->m, &resArray[i*m0->col + j]);
     }
-    return 0;
+    return res;
 }
 
 //check if two matrix can be concatenate left and right
@@ -153,7 +157,11 @@ matrix* concatMatrixLROutPlace(matrix* m0, matrix* m1)
         return NULL;
     }
     matrix * res = (matrix *)malloc(sizeof(matrix));
-    initMatrixAttri(res, 2, new_row, new_col);
+    if(initMatrixAttri(res, 2, new_row, new_col) != 0)
+    {
+        free(res);
+        return NULL;
+    }
     int *resArray = malloc(sizeof(int) * (new_row * new_col));
     for(i = 0; i < new_row; i++)
     {
@@ -196,7 +204,11 @@ matrix* concatMatrixUDOutPlace(matrix* m0, matrix* m1)
         return NULL;
     }
     matrix * res = (matrix *)malloc(sizeof(matrix));
-    initMatrixAttri(res, 2, new_row, new_col);
+    if(initMatrixAttri(res, 2, new_row, new_col)!=0)
+    {
+        free(res);
+        return NULL;
+    }
     int *resArray = malloc(sizeof(int) * (new_row * new_col));
     for(i = 0; i < m0->row; i++)
     {

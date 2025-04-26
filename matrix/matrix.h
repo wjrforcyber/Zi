@@ -18,6 +18,7 @@ int fetchMatrixCol(matrix* mI, int colIndex, ziArray* colArray);
 int* getMatrixItemIndex(matrix* mI, int rowIndex, int colIndex);
 matrix* addMatrix(matrix* m0, matrix* m1);
 matrix* productMatrix(matrix* m0, matrix* m1);
+matrix* nTimesMatrixOutplace(matrix* m0, int n);
 matrix* concatMatrixLROutPlace(matrix* m0, matrix* m1);
 matrix* concatMatrixUDOutPlace(matrix* m0, matrix* m1);
 int checkIdentityMatrix(matrix* m0, matrix* m1);
