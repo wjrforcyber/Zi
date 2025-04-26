@@ -8,6 +8,7 @@ Zi contains most of the basic data structures implemented in C, which will help 
 
 > [!WARNING]
 > This work is still in its early stage and designed for my own needs. Some datatype may not even be supported, if so, report an issue.
+
 > [!CAUTION]
 > The tests only assure no mem error but do not guarantee on mem leak.
 
