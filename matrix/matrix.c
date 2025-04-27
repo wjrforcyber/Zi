@@ -122,10 +122,6 @@ int readMatrix(matrix* mI, char* mS)
         preC = ptr_r;
         ptr = ptr_r;
     }
-    for(int i = 0 ; i < index; i ++)
-    {
-        printf("sArray %d is %d \n", i, sArray[i]);
-    }
     for(int i = 0; i < index; i++)
     {
         pushArray(&mI->m, &sArray[i]);
@@ -197,4 +193,27 @@ matrix* createIdentityMatrix(int n)
         }
     }
     return id;
+}
+
+int isIdentityMatrix(matrix *m0)
+{
+    int i = 0;
+    int j = 0;
+    MatrixForEachItem(m0, i, j)
+    {
+        if(i == j)
+        {
+            if(*getMatrixIntItemIndex(m0, i, j) != 1)
+            {
+                return 1;
+            }
+        }
+        else {
+            if(*getMatrixIntItemIndex(m0, i, j) != 0)
+            {
+                return 1;
+            }
+        }
+    }
+    return 0;
 }

@@ -93,21 +93,25 @@ matrix* productMatrix(matrix* m0, matrix* m1)
         return NULL;
     }
     int *res = malloc(sizeof(int) * (mR->row * mR->col));
-    MatrixForEachItem(mR, i, j)
+    
+    for(int i = 0; i < mR->row; i++)
     {
-        ziArray r0;
-        initArray(&r0, 8);
-        ziArray r1;
-        initArray(&r1, 8);
-        fetchMatrixRow(m0, i, &r0);
-        fetchMatrixCol(m1, j, &r1);
-        res[i * mR->row + j] = productIntArray(&r0, &r1);
-        clearArray(&r0);
-        clearArray(&r1);
+        for(int j = 0; j < mR->col; j++)
+        {
+            ziArray r0;
+            initArray(&r0, 8);
+            ziArray r1;
+            initArray(&r1, 8);
+            fetchMatrixRow(m0, i, &r0);
+            fetchMatrixCol(m1, j, &r1);
+            res[i * mR->col + j] = productIntArray(&r0, &r1);
+            clearArray(&r0);
+            clearArray(&r1);
+        }
     }
     MatrixForEachItem(mR, i, j)
     {
-        pushArray(&mR->m, &res[i * mR->row + j]);
+        pushArray(&mR->m, &res[i * mR->col + j]);
     }
     return mR;
 }
@@ -188,7 +192,7 @@ matrix* concatMatrixLROutPlace(matrix* m0, matrix* m1)
         }
         for(j = m0->col; j < new_col; j++)
         {
-            resArray[i * new_col + j] = *getMatrixItemIndex(m0, i, j - m0->col);
+            resArray[i * new_col + j] = *getMatrixItemIndex(m1, i, j - m0->col);
         }
     }
     MatrixForEachItem(res, i, j)
@@ -238,7 +242,7 @@ matrix* concatMatrixUDOutPlace(matrix* m0, matrix* m1)
     {
         for(j = 0; j < new_col; j++)
         {
-            resArray[i * new_col + j] = *getMatrixItemIndex(m0, i - m0->row, j);
+            resArray[i * new_col + j] = *getMatrixItemIndex(m1, i - m0->row, j);
         }
     }
     MatrixForEachItem(res, i, j)
@@ -251,6 +255,7 @@ matrix* concatMatrixUDOutPlace(matrix* m0, matrix* m1)
 //Kronecker product
 matrix* kProductMatrix(matrix* m0, matrix* m1)
 {
+    //if right matrix is identity with dimension 1
     int i = 0;
     int j = 0;
     matrix ** m_res = malloc(sizeof(matrix *) * (m0->row * m0->col));
@@ -266,10 +271,21 @@ matrix* kProductMatrix(matrix* m0, matrix* m1)
     for(i = 0; i < m0->row; i++)
     {
         matrix * nEach = m_res[i * m0->col];
-        for(j = 1; j < m0->col; j++)
+        if(m0->col != 1)
         {
-            matrix* mR = m_res[i * m0->col + j];
-            nEach = concatMatrixLROutPlace(nEach, mR);
+            //matrix ** each_free = malloc(sizeof(matrix *) * m0->col - 2);
+            for(j = 1; j < m0->col; j++)
+            {
+                matrix *old = nEach;
+                matrix* mR = m_res[i * m0->col + j];
+                nEach = concatMatrixLROutPlace(old, mR);
+                
+                if(j > 1)
+                {
+                    clearMatrix(old);
+                    free(old);
+                }
+            }
         }
         m_rows[i] = nEach;
     }
@@ -281,9 +297,12 @@ matrix* kProductMatrix(matrix* m0, matrix* m1)
     }
     free(m_res);
     matrix * k_res = m_rows[0];
-    for(i = 1; i < m0->row; i++)
+    if(m0->row != 1)
     {
-        k_res = concatMatrixUDOutPlace(k_res, m_rows[i]);
+        for(i = 1; i < m0->row; i++)
+        {
+            k_res = concatMatrixUDOutPlace(k_res, m_rows[i]);
+        }
     }
     //free the m_rows
     for(int i = 0; i < m0->row; i++)
@@ -306,9 +325,17 @@ matrix * stpMatrix(matrix * m0, matrix * m1)
     }
     //create the Identidy matrix
     matrix * idL = createIdentityMatrix(lcm/m0->col);
+    printf("Id L:\n");
+    showDigitsArray(&idL->m);
     matrix * idR = createIdentityMatrix(lcm/m1->row);
+    printf("Id R:\n");
+    showDigitsArray(&idR->m);
     matrix * kProL = kProductMatrix(m0, idL);
+    printf("KPro L:\n");
+    showDigitsArray(&kProL->m);
     matrix * kProR = kProductMatrix(m1, idR);
+    printf("KPro R:\n");
+    showDigitsArray(&kProR->m);
     matrix * res = productMatrix(kProL, kProR);
     clearMatrix(idL);
     free(idL);
@@ -328,6 +355,15 @@ int checkIdentityMatrix(matrix* m0, matrix* m1)
     {
         printf("Dimension or attributes are not identical.\n");
         return 1;
+    }
+    int i = 0;
+    int j = 0;
+    MatrixForEachItem(m0, i, j)
+    {
+        if(*getMatrixItemIndex(m0, i, j) != *getMatrixItemIndex(m1, i, j))
+        {
+            return 1;
+        }
     }
     return 0;
 }
