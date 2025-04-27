@@ -31,3 +31,11 @@ add_test(NAME MatrixTestsMatrixNtimesMatrixOutplace COMMAND matrixNtimesMatrixOu
 add_executable(matrixKProductMatrix matrixKProductMatrix.c)
 target_link_libraries(matrixKProductMatrix ziMatrix)
 add_test(NAME MatrixTestsMatrixKProductMatrix COMMAND matrixKProductMatrix)
+
+add_executable(matrixCreateIdentityMatrix matrixCreateIdentityMatrix.c)
+target_link_libraries(matrixCreateIdentityMatrix ziMatrix)
+add_test(NAME MatrixTestsMatrixCreateIdentityMatrix COMMAND matrixCreateIdentityMatrix)
+
+add_executable(matrixStpMatrix matrixStpMatrix.c)
+target_link_libraries(matrixStpMatrix ziMatrix)
+add_test(NAME MatrixTestsStpMatrix COMMAND matrixStpMatrix)

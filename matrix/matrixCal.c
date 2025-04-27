@@ -295,6 +295,32 @@ matrix* kProductMatrix(matrix* m0, matrix* m1)
     return k_res;
 }
 
+//semi-tensor product
+matrix * stpMatrix(matrix * m0, matrix * m1)
+{
+    //get the lCM
+    int lcm = m0->col > m1->row ? m0->col: m1->row;
+    while(lcm % m0->col != 0 || lcm % m1->row != 0)
+    {
+        lcm *= 2;
+    }
+    //create the Identidy matrix
+    matrix * idL = createIdentityMatrix(lcm/m0->col);
+    matrix * idR = createIdentityMatrix(lcm/m1->row);
+    matrix * kProL = kProductMatrix(m0, idL);
+    matrix * kProR = kProductMatrix(m1, idR);
+    matrix * res = productMatrix(kProL, kProR);
+    clearMatrix(idL);
+    free(idL);
+    clearMatrix(idR);
+    free(idR);
+    clearMatrix(kProL);
+    free(kProL);
+    clearMatrix(kProR);
+    free(kProR);
+    return res;
+}
+
 //check matix identity
 int checkIdentityMatrix(matrix* m0, matrix* m1)
 {

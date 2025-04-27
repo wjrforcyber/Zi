@@ -29,7 +29,7 @@ int initMatrixAttri(matrix *mI, int dim, int row, int col)
     mI->dim = dim;
     mI->row = row;
     mI->col = col;
-    if(initArray(&mI->m, row * col / INCREASE_RATE) != 0)
+    if(initArray(&mI->m, row * col) != 0)
     {
         printf("Initialization of matix with attributes failed.\n");
         return 1;
@@ -171,4 +171,30 @@ int* getMatrixIntItemIndex(matrix* mI, int rowIndex, int colIndex)
         return NULL;
     }
     return fetchIndexArray(&mI->m, rowIndex * mI->col + colIndex);
+}
+
+//create n dimension identity matrix
+matrix* createIdentityMatrix(int n)
+{
+    matrix * id;
+    int i = 0;
+    int j = 0;
+    id = (matrix *)malloc(sizeof(matrix));
+    initMatrixAttri(id, 2, n, n);
+    int * res = (int *)malloc(sizeof(int) * n * n);
+    MatrixForEachItem(id, i, j)
+    {
+        if(i == j)
+        {
+            //push 1
+            res[i*id->col + j] = 1;
+            pushArray(&id->m, &res[i*id->col + j]);
+        }
+        else{
+            //push 0
+            res[i*id->col + j] = 0;
+            pushArray(&id->m, &res[i*id->col + j]);
+        }
+    }
+    return id;
 }
