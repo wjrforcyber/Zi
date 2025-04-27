@@ -74,7 +74,7 @@ int main()
     //NOT should have "[[0,1,1,1],[1,0,0,0]]";
     assert(readMatrix(mI0, mS0) == 0);
     matrix *not = notMatrix();
-    matrix *res = productMatrix(not, mI0);
+    matrix *res = stpMatrix(not, mI0);
     showDigitsArray(&res->m);
     clearMatrix(mI0);
     clearMatrix(res);

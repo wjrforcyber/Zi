@@ -13,7 +13,7 @@ int main()
     assert(readMatrix(mI0, mS0) == 0);
     assert(readMatrix(mRes, mSRes) == 0);
     matrix *not = notMatrix();
-    matrix *res = productMatrix(not, mI0);
+    matrix *res = stpMatrix(not, mI0);
     showDigitsArray(&res->m);
     assert(checkIdentityMatrix(res, mRes) == 0);
     assert(clearMatrix(mI0) == 0);
