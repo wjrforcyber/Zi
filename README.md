@@ -46,7 +46,7 @@ int main()
     readMatrix(mI0, mS0);
     readMatrix(mI1, mS1);
     matrix* res = stpMatrix(mI0, mI1);
-    
+    showDigitsArray(&res->m);
     clearMatrix(mI0);
     clearMatrix(mI1);
     clearMatrix(res);
