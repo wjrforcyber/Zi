@@ -39,3 +39,7 @@ add_test(NAME MatrixTestsMatrixCreateIdentityMatrix COMMAND matrixCreateIdentity
 add_executable(matrixStpMatrix matrixStpMatrix.c)
 target_link_libraries(matrixStpMatrix ziMatrix)
 add_test(NAME MatrixTestsStpMatrix COMMAND matrixStpMatrix)
+
+add_executable(matrixNotMatrix matrixNotMatrix.c)
+target_link_libraries(matrixNotMatrix ziMatrix)
+add_test(NAME MatrixTestsNotMatrix COMMAND matrixNotMatrix)

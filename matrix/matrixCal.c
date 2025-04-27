@@ -367,3 +367,21 @@ int checkIdentityMatrix(matrix* m0, matrix* m1)
     }
     return 0;
 }
+
+//not operator
+matrix* notMatrix()
+{
+    matrix *not_res = (matrix *)malloc(sizeof(matrix));
+    initMatrixAttri(not_res, 2, 2, 2);
+    int *not = (int *)malloc(sizeof(int) * 4);
+    //[[0,1],[0,1]]
+    not[0] = 0;
+    not[1] = 1;
+    not[2] = 1;
+    not[3] = 0;
+    for(int i = 0; i < 4; i++)
+    {
+        pushArray(&not_res->m, &not[i]);
+    }
+    return not_res;
+}

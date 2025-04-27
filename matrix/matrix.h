@@ -24,6 +24,7 @@ matrix* concatMatrixLROutPlace(matrix* m0, matrix* m1);
 matrix* concatMatrixUDOutPlace(matrix* m0, matrix* m1);
 matrix* kProductMatrix(matrix* m0, matrix* m1);
 matrix * stpMatrix(matrix * m0, matrix * m1);
+matrix* notMatrix();
 int checkIdentityMatrix(matrix* m0, matrix* m1);
 int isIdentityMatrix(matrix *m0);
 
