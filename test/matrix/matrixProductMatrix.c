@@ -27,7 +27,11 @@ int main()
     assert(productMatrix(mIL, mIWrong) == NULL);
     matrix * pRes = productMatrix(mIL, mIR);
     assert(checkIdentityArray(&pRes->m, &resA) == 0);
-    clearArray(&resA);
+    assert(clearArray(&resA) == 0);
+    assert(clearMatrix(mIL) == 0);
+    assert(clearMatrix(mIR) == 0);
+    assert(clearMatrix(mIWrong) == 0);
+    assert(clearMatrix(pRes) == 0);
     free(pRes);
     return 0;
 }

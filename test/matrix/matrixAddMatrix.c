@@ -25,4 +25,9 @@ int main()
         pushArray(&resComp, &resI[i]);
     }
     assert(checkIdentityArray(&res->m, &resComp) == 0);
+    clearArray(&resComp);
+    clearMatrix(mI0);
+    clearMatrix(mI1);
+    clearMatrix(res);
+    free(res);
 }

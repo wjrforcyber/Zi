@@ -19,6 +19,8 @@ int addCheck(matrix* m0, matrix* m1)
 }
 matrix* addMatrix(matrix* m0, matrix* m1)
 {
+    int i = 0;
+    int j = 0;
     matrix* mR = (matrix *)malloc(sizeof(matrix));
     if(initMatrix(mR) == 1)
     {
@@ -33,6 +35,8 @@ matrix* addMatrix(matrix* m0, matrix* m1)
     mR->dim = m0->dim;
     mR->row = m0->row;
     mR->col = m0->col;
+    //mR->row_sep = 1;
+    int *restruct = (int *)malloc(sizeof(int) * m0->row * m0->col);
     for(int r = 0; r < m0->row; r++)
     {
         ziArray r0;
@@ -42,9 +46,20 @@ matrix* addMatrix(matrix* m0, matrix* m1)
         fetchMatrixRow(m0, r, &r0);
         fetchMatrixRow(m1, r, &r1);
         ziArray *addRow = addArray(&r0, &r1);
-        extendArray(&mR->m, addRow);
+        //extendArray(&mR->m, addRow);
+        for(int k = 0; k < addRow->size; k++)
+        {
+            restruct[r * m0->col + k] = *fetchIndexArray(addRow, k);
+        }
         clearArray(&r0);
         clearArray(&r1);
+        free(fetchIndexArray(addRow, 0));
+        clearArray(addRow);
+        free(addRow);
+    }
+    MatrixForEachItem(mR, i , j)
+    {
+        pushArray(&mR->m, &restruct[i * mR->col + j]);
     }
     return mR;
 }
@@ -67,15 +82,17 @@ matrix* productMatrix(matrix* m0, matrix* m1)
     matrix* mR = (matrix *)malloc(sizeof(matrix));
     if(initMatrixAttri(mR, 2, m0->row, m1->col) == 1)
     {
+        clearArray(&mR->m);
         free(mR);
         return NULL;
     }
     if(productCheck(m0, m1) == 1)
     {
+        clearArray(&mR->m);
         free(mR);
         return NULL;
     }
-    int *res = malloc(sizeof(int) * (mR->row & mR->col));
+    int *res = malloc(sizeof(int) * (mR->row * mR->col));
     MatrixForEachItem(mR, i, j)
     {
         ziArray r0;
@@ -236,16 +253,6 @@ matrix* kProductMatrix(matrix* m0, matrix* m1)
 {
     int i = 0;
     int j = 0;
-    int new_col = m0->col * m1->col;
-    int new_row = m0->row * m1->row;
-    matrix * res = (matrix *)malloc(sizeof(matrix));
-    if(initMatrixAttri(res, 2, new_row, new_col)!=0)
-    {
-        free(res);
-        return NULL;
-    }
-    //int *resArray = malloc(sizeof(int) * (new_row * new_col));
-    
     matrix ** m_res = malloc(sizeof(matrix *) * (m0->row * m0->col));
     MatrixForEachItem(m0, i, j)
     {
@@ -266,11 +273,25 @@ matrix* kProductMatrix(matrix* m0, matrix* m1)
         }
         m_rows[i] = nEach;
     }
+    //free the m_res
+    for(int i = 0; i < m0->row * m0->col; i++)
+    {
+        clearMatrix(m_res[i]);
+        free(m_res[i]);
+    }
+    free(m_res);
     matrix * k_res = m_rows[0];
     for(i = 1; i < m0->row; i++)
     {
         k_res = concatMatrixUDOutPlace(k_res, m_rows[i]);
     }
+    //free the m_rows
+    for(int i = 0; i < m0->row; i++)
+    {
+        clearMatrix(m_rows[i]);
+        free(m_rows[i]);
+    }
+    free(m_rows);
     return k_res;
 }
 

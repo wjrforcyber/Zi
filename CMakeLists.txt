@@ -3,7 +3,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(Rat VERSION 1.0)
 
-add_compile_options(-W -Wall -Wextra)
+add_compile_options(-W -Wall -Wextra -fsanitize=address -g)
+
+add_link_options(-fsanitize=address)
 
 # array lib
 ADD_LIBRARY( ziArray STATIC array/array.c )

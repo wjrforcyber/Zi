@@ -1,6 +1,5 @@
 #include "matrix.h"
 #include <assert.h>
-#include <stdio.h>
 
 int main()
 {
@@ -16,5 +15,8 @@ int main()
     assert(readMatrix(mRes, mSRes) == 0);
     matrix* res = nTimesMatrixOutplace(mI0, 3);
     assert(checkIdentityMatrix(res, mRes) == 0);
+    assert(clearMatrix(mI0) == 0);
+    assert(clearMatrix(mRes) == 0);
     assert(clearMatrix(res) == 0);
+    free(res);
 }

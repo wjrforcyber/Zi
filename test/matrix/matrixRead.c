@@ -11,5 +11,6 @@ int main()
     assert(mI->dim == 2);
     assert(mI->row == 2);
     assert(mI->col == 3);
+    clearMatrix(mI);
     return 0;
 }

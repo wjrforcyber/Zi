@@ -20,5 +20,9 @@ int main()
     assert(readMatrix(mRes, mSRes) == 0);
     matrix* res = concatMatrixLROutPlace(mI0, mI1);
     assert(checkIdentityMatrix(res, mRes) == 0);
+    assert(clearMatrix(mI0) == 0);
+    assert(clearMatrix(mI1) == 0);
+    assert(clearMatrix(mRes) == 0);
     assert(clearMatrix(res) == 0);
+    free(res);
 }

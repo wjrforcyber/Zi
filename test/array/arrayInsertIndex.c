@@ -20,5 +20,6 @@ int main()
     assert(*fetchIndexArray(ptr, 2) == 8);
     assert(*fetchIndexArray(ptr, 3) == 6);
     assert(ptr->size == 4);
+    clearArray(ptr);
     return 0;
 }

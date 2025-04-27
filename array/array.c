@@ -171,10 +171,10 @@ ziArray* addArray(ziArray* a, ziArray* b)
     //res->size = a->size;
     int* res_ini = (int *)malloc(sizeof(int) * a->size);
     memset(res_ini, 0, sizeof(int)*a->size);
-    for(int i = 0; i < a->size; i++)
-    {
-        pushArray(res, &res_ini[i]);
-    }
+    //for(int i = 0; i < a->size; i++)
+    //{
+    //    pushArray(res, &res_ini[i]);
+    //}
 
     if(a->size != b->size)
     {
@@ -185,7 +185,8 @@ ziArray* addArray(ziArray* a, ziArray* b)
     }
     for(int i = 0; i < a->size; i++)
     {
-        *fetchIndexArray(res, i) = *fetchIndexArray(a, i) + *fetchIndexArray(b, i);
+        res_ini[i] = *fetchIndexArray(a, i) + *fetchIndexArray(b, i);
+        pushArray(res, &res_ini[i]);
     }
     return res;
 }

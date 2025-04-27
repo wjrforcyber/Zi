@@ -37,9 +37,13 @@ int initMatrixAttri(matrix *mI, int dim, int row, int col)
     return 0;
 }
 
-//clear matrix
+//clear matrix, not good
 int clearMatrix(matrix* m)
 {
+    if(fetchIndexArray(&m->m, 0) != NULL)
+    {
+        free(fetchIndexArray(&m->m, 0));
+    }
     if(clearArray(&m->m) != 0)
     {
         printf("Failed to clear matrix array.\n");
@@ -57,7 +61,6 @@ int readMatrix(matrix* mI, char* mS)
     char* ptr_r;
     char* preC;
     int endFlag = 0;
-    //int sArray[100];
     int *sArray = (int *)malloc(sizeof(int) * 100);
     int index = 0;
     int dimFlag = 0;

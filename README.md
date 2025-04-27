@@ -10,7 +10,7 @@ Zi contains most of the basic data structures implemented in C, which will help 
 > This work is still in its early stage and designed for my own needs. Some datatype may not even be supported, if so, report an issue.
 
 > [!CAUTION]
-> The tests only assure no mem error but do not guarantee on mem leak.
+> Sanitize check is turned on, if mem error/leak exists, PR won't be accepted.
 
 ## Structure
 The project uses CMake, and test framework is CTest.

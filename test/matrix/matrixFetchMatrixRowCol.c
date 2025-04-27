@@ -63,5 +63,6 @@ int main()
     clearArray(&originCheck1);
     clearArray(&originCheckCol0);
     clearArray(&originCheckCol2);
+    clearMatrix(mI);
     return 0;
 }
