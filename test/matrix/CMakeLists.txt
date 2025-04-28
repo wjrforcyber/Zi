@@ -43,3 +43,7 @@ add_test(NAME MatrixTestsStpMatrix COMMAND matrixStpMatrix)
 add_executable(matrixNotMatrix matrixNotMatrix.c)
 target_link_libraries(matrixNotMatrix ziMatrix)
 add_test(NAME MatrixTestsNotMatrix COMMAND matrixNotMatrix)
+
+add_executable(matrixAndMatrix matrixAndMatrix.c)
+target_link_libraries(matrixAndMatrix ziMatrix)
+add_test(NAME MatrixTestsAndMatrix COMMAND matrixAndMatrix)

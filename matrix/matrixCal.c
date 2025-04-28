@@ -279,7 +279,7 @@ matrix* kProductMatrix(matrix* m0, matrix* m1)
                 matrix *old = nEach;
                 matrix* mR = m_res[i * m0->col + j];
                 nEach = concatMatrixLROutPlace(old, mR);
-                
+                //start from 1, this does not free m_res[0]
                 if(j > 1)
                 {
                     clearMatrix(old);
@@ -289,6 +289,21 @@ matrix* kProductMatrix(matrix* m0, matrix* m1)
         }
         m_rows[i] = nEach;
     }
+    
+    matrix * k_res = m_rows[0];
+    if(m0->row != 1)
+    {
+        for(i = 1; i < m0->row; i++)
+        {
+            matrix *old = k_res;
+            k_res = concatMatrixUDOutPlace(old, m_rows[i]);
+            if(i > 1)
+            {
+                clearMatrix(old);
+                free(old);
+            }
+        }
+    }
     //free the m_res
     for(int i = 0; i < m0->row * m0->col; i++)
     {
@@ -296,13 +311,11 @@ matrix* kProductMatrix(matrix* m0, matrix* m1)
         free(m_res[i]);
     }
     free(m_res);
-    matrix * k_res = m_rows[0];
-    if(m0->row != 1)
+    //if only one column, the first matrix(column) has already been freed
+    if(m0->col == 1)
     {
-        for(i = 1; i < m0->row; i++)
-        {
-            k_res = concatMatrixUDOutPlace(k_res, m_rows[i]);
-        }
+        free(m_rows);
+        return k_res;
     }
     //free the m_rows
     for(int i = 0; i < m0->row; i++)
@@ -325,17 +338,17 @@ matrix * stpMatrix(matrix * m0, matrix * m1)
     }
     //create the Identidy matrix
     matrix * idL = createIdentityMatrix(lcm/m0->col);
-    printf("Id L:\n");
-    showDigitsArray(&idL->m);
+    //printf("Id L:\n");
+    //showDigitsArray(&idL->m);
     matrix * idR = createIdentityMatrix(lcm/m1->row);
-    printf("Id R:\n");
-    showDigitsArray(&idR->m);
+    //printf("Id R:\n");
+    //showDigitsArray(&idR->m);
     matrix * kProL = kProductMatrix(m0, idL);
-    printf("KPro L:\n");
-    showDigitsArray(&kProL->m);
+    //printf("KPro L:\n");
+    //showDigitsArray(&kProL->m);
     matrix * kProR = kProductMatrix(m1, idR);
-    printf("KPro R:\n");
-    showDigitsArray(&kProR->m);
+    //printf("KPro R:\n");
+    //showDigitsArray(&kProR->m);
     matrix * res = productMatrix(kProL, kProR);
     clearMatrix(idL);
     free(idL);
@@ -368,13 +381,13 @@ int checkIdentityMatrix(matrix* m0, matrix* m1)
     return 0;
 }
 
-//not operator
+//NOT operator
 matrix* notMatrix()
 {
     matrix *not_res = (matrix *)malloc(sizeof(matrix));
     initMatrixAttri(not_res, 2, 2, 2);
     int *not = (int *)malloc(sizeof(int) * 4);
-    //[[0,1],[0,1]]
+    //[[0,1],[1,0]]
     not[0] = 0;
     not[1] = 1;
     not[2] = 1;
@@ -384,4 +397,39 @@ matrix* notMatrix()
         pushArray(&not_res->m, &not[i]);
     }
     return not_res;
+}
+
+
+//EQ operator
+matrix* eqMatrix()
+{
+    matrix *eq_res = (matrix *)malloc(sizeof(matrix));
+    initMatrixAttri(eq_res, 2, 2, 4);
+    int *eq = (int *)malloc(sizeof(int) * 8);
+    //[[1,0,0,1],[0,1,1,0]]
+    int val_eq[] = {1,0,0,1,\
+                        0,1,1,0};
+    for(int i = 0; i < 8; i++)
+    {
+        eq[i] = val_eq[i];
+        pushArray(&eq_res->m, &eq[i]);
+    }
+    return eq_res;
+}
+
+//AND operator
+matrix* andMatrix()
+{
+    matrix *and_res = (matrix *)malloc(sizeof(matrix));
+    initMatrixAttri(and_res, 2, 2, 4);
+    int *and = (int *)malloc(sizeof(int) * 8);
+    //[[1,0,0,0],[0,1,1,1]]
+    int val_and[] = {1,0,0,0,\
+                        0,1,1,1};
+    for(int i = 0; i < 8; i++)
+    {
+        and[i] = val_and[i];
+        pushArray(&and_res->m, &and[i]);
+    }
+    return and_res;
 }

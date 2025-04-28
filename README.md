@@ -61,8 +61,9 @@ Array contains:
 ```
 
 ### Boolean operator
+Given basic boolean logic **_TRUE_** $\begin{bmatrix} 1 \cr 0 \end{bmatrix}$ and **_FALSE_** $\begin{bmatrix} 0 \cr 1 \end{bmatrix}$.
 #### NOT
-Given truth table `[[1,0,0,0],[0,1,1,1]]`, the `NOT` operator will result in `[[0,1,1,1],[1,0,0,0]]`.
+Given truth table $\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 1 & 1 \end{bmatrix}$, apply the **_NOT_** operator $\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$ will result in $\begin{bmatrix} 0 & 1 & 1 & 1 \\ 1 & 0 & 0 & 0 \end{bmatrix}$.
 ```C
 #include "matrix.h"
 
@@ -89,7 +90,42 @@ Warning: Only proper on int type.
 Array contains:
 0 1 1 1 1 0 0 0
 ```
+#### AND
+According to $a \ \sigma \ b = M_\sigma \ a \ b$, given boolean definition of **_AND_** $\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 1 & 1 \end{bmatrix}$, and truth value of variable $a$ (**_TURE_**), $b$ (**_FALSE_**), apply **_AND_** to $a$, $b$, will result in **_FALSE_**.
 
+```C
+int main()
+{
+    matrix test0;
+    matrix* mI0 = &test0;
+    matrix test1;
+    matrix* mI1 = &test1;
+    //f_tt0 = [[1],[0]] True
+    char tt0[100] = "[[1],[0]]";
+    //f_tt1 = [[0],[1]] False
+    char tt1[100] = "[[0],[1]]";
+    readMatrix(mI0, tt0);
+    readMatrix(mI1, tt1);
+    matrix *and = andMatrix();
+    matrix *kPro_and_a = stpMatrix(and, mI0);
+    matrix *res_and_a_b = stpMatrix(kPro_and_a, mI1);
+    showDigitsArray(&res_and_a_b->m);
+    clearMatrix(mI0);
+    clearMatrix(mI1);
+    clearMatrix(and);
+    free(and);
+    clearMatrix(kPro_and_a);
+    free(kPro_and_a);
+    clearMatrix(res_and_a_b);
+    free(res_and_a_b);
+    return 0;
+}
+```
+```
+Warning: Only proper on int type.
+Array contains:
+0 1
+```
 
 ## Contribution 
 Contribution is welcome but should illustrate three sections: Why, What and How before the review.
