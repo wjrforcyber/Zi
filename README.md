@@ -118,6 +118,8 @@ According to $a \ \sigma \ b = M_\sigma \ a \ b$, given boolean definition of **
 , and truth value of variable $a$ (**_TURE_**), $b$ (**_FALSE_**), apply **_AND_** to $a$, $b$, will result in **_FALSE_**.
 
 ```C
+#include "matrix.h"
+
 int main()
 {
     matrix test0;
