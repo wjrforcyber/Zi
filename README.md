@@ -61,9 +61,29 @@ Array contains:
 ```
 
 ### Boolean operator
-Given basic boolean logic **_TRUE_** $\begin{bmatrix} 1 \cr 0 \end{bmatrix}$ and **_FALSE_** $\begin{bmatrix} 0 \cr 1 \end{bmatrix}$.
+Given basic boolean logic **_TRUE_** 
+```math
+\begin{bmatrix} 1 \cr 0 \end{bmatrix}
+```
+and **_FALSE_** 
+```math
+\begin{bmatrix} 0 \cr 1 \end{bmatrix}
+```
+.
 #### NOT
-Given truth table $\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 1 & 1 \end{bmatrix}$, apply the **_NOT_** operator $\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$ will result in $\begin{bmatrix} 0 & 1 & 1 & 1 \\ 1 & 0 & 0 & 0 \end{bmatrix}$.
+Given truth table 
+```math
+\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 1 & 1 \end{bmatrix}
+```
+, apply the **_NOT_** operator 
+```math
+\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
+```
+will result in 
+```math
+\begin{bmatrix} 0 & 1 & 1 & 1 \\ 1 & 0 & 0 & 0 \end{bmatrix}
+```
+.
 ```C
 #include "matrix.h"
 
@@ -91,7 +111,11 @@ Array contains:
 0 1 1 1 1 0 0 0
 ```
 #### AND
-According to $a \ \sigma \ b = M_\sigma \ a \ b$, given boolean definition of **_AND_** $\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 1 & 1 \end{bmatrix}$, and truth value of variable $a$ (**_TURE_**), $b$ (**_FALSE_**), apply **_AND_** to $a$, $b$, will result in **_FALSE_**.
+According to $a \ \sigma \ b = M_\sigma \ a \ b$, given boolean definition of **_AND_** 
+```math
+\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 1 & 1 \end{bmatrix}
+```
+, and truth value of variable $a$ (**_TURE_**), $b$ (**_FALSE_**), apply **_AND_** to $a$, $b$, will result in **_FALSE_**.
 
 ```C
 int main()
