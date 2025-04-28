@@ -16,7 +16,6 @@ int main()
     
     matrix* res = addMatrix(mI0, mI1);
     assert(res != NULL);
-    showDigitsArray(&res->m);
     ziArray resComp;
     initArray(&resComp, 8);
     int resI[6] = {13,34,7,11,6,17};

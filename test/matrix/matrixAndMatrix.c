@@ -25,6 +25,7 @@ int main()
     matrix *kPro_and_b = stpMatrix(and, mI1);
     matrix *res_and_b_a = stpMatrix(kPro_and_b, mI0);
 
+    showDigitsMatrix(res_and_a_b);
     assert(checkIdentityMatrix(res_and_a_b, res_and_b_a) == 0);
     assert(checkIdentityMatrix(mRes, res_and_b_a) == 0);
     assert(clearMatrix(mI0) == 0);

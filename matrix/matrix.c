@@ -126,7 +126,6 @@ int readMatrix(matrix* mI, char* mS)
     {
         pushArray(&mI->m, &sArray[i]);
     }
-    showDigitsArray(&mI->m);
     return 0;
 }
 
@@ -215,5 +214,43 @@ int isIdentityMatrix(matrix *m0)
             }
         }
     }
+    return 0;
+}
+
+//show the 2 dimension matrix
+int showDigitsMatrix(matrix* m0)
+{
+    int i = 0;
+    int j = 0;
+    if(m0->dim != 2)
+    {
+        printf("Currently only support 2 dimension matrix.\n");
+        return 1;
+    }
+    printf("Matrix contains:\n[\n");
+    MatrixForEachItem(m0, i, j)
+    {
+        if(j == 0)
+        {
+            printf("[");
+        }
+        if(j == m0->col - 1)
+        {
+            printf(" %d ", *getMatrixIntItemIndex(m0, i, j));
+            if(i == m0->row - 1)
+            {
+                printf("]\n");
+            }
+            else 
+            {
+                printf("],\n");
+            }
+        }
+        else 
+        {
+            printf(" %d,", *getMatrixIntItemIndex(m0, i, j));
+        }
+    }
+    printf("]\n");
     return 0;
 }

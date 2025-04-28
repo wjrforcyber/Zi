@@ -13,7 +13,7 @@ Zi contains some of the basic data structures implemented in C, which will help 
 > Sanitize check is turned on, if mem error/leak exists, PR won't be accepted.
 
 ## Structure
-The project uses CMake, and test framework is CTest.
+The project uses `CMake` with `CTest`.
 
 ## Build
 ```
@@ -24,6 +24,12 @@ make test
 ```
 
 ## Example
+Some usage of the library will be shown here to give a minimum reproduceable example([MRE](https://en.wikipedia.org/wiki/Minimal_reproducible_example)), there's no proper documentation right now, if detailed usage example of the interface is needed, you check the interface test in `test` folder.
+### Array
+Simple array reconstruct.
+### Matrix
+Matirx can be read from a string, every row of the matrix is wrapped by $[$ and $]$, when reading a matrix, no need to worry about the space between numbers, it will be automatically normalized. 
+
 ### Semi-tensor product
 
 ```C
@@ -106,9 +112,11 @@ int main()
 }
 ```
 ```bash
-Warning: Only proper on int type.
-Array contains:
-0 1 1 1 1 0 0 0
+Matrix contains:
+[
+[ 0, 1, 1, 1 ],
+[ 1, 0, 0, 0 ]
+]
 ```
 #### AND
 According to $a \ \sigma \ b = M_\sigma \ a \ b$, given boolean definition of **_AND_** 
@@ -148,9 +156,11 @@ int main()
 }
 ```
 ```
-Warning: Only proper on int type.
-Array contains:
-0 1
+Matrix contains:
+[
+[ 0 ],
+[ 1 ]
+]
 ```
 
 ## Contribution 

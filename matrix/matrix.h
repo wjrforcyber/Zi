@@ -29,6 +29,7 @@ matrix* eqMatrix();
 matrix* andMatrix();
 int checkIdentityMatrix(matrix* m0, matrix* m1);
 int isIdentityMatrix(matrix *m0);
+int showDigitsMatrix(matrix* m0);
 
 #define MatrixForEachItem( m, i, j ) \
     for( i = 0; i < m->row; i++)        \

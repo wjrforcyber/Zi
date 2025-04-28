@@ -14,7 +14,7 @@ int main()
     assert(readMatrix(mRes, mSRes) == 0);
     matrix *not = notMatrix();
     matrix *res = stpMatrix(not, mI0);
-    showDigitsArray(&res->m);
+    showDigitsMatrix(res);
     assert(checkIdentityMatrix(res, mRes) == 0);
     assert(clearMatrix(mI0) == 0);
     assert(clearMatrix(mRes) == 0);

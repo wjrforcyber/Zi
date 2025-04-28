@@ -47,3 +47,7 @@ add_test(NAME MatrixTestsNotMatrix COMMAND matrixNotMatrix)
 add_executable(matrixAndMatrix matrixAndMatrix.c)
 target_link_libraries(matrixAndMatrix ziMatrix)
 add_test(NAME MatrixTestsAndMatrix COMMAND matrixAndMatrix)
+
+add_executable(matrixShowDigitsMatrix matrixShowDigitsMatrix.c)
+target_link_libraries(matrixShowDigitsMatrix ziMatrix)
+add_test(NAME MatrixTestsShowDigitsMatrix COMMAND matrixShowDigitsMatrix)
