@@ -30,6 +30,7 @@ matrix * stpMatrix(matrix * m0, matrix * m1);
 matrix* notMatrix();
 matrix* eqMatrix();
 matrix* andNMatrix(int n);
+matrix* orNMatrix(int n);
 int checkIdentityMatrix(matrix* m0, matrix* m1);
 
 #define MatrixForEachItem( m, i, j ) \

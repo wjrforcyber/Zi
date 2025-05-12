@@ -424,16 +424,15 @@ matrix* andNMatrix(int n)
     int col = 1 << n;
     initMatrixAttri(and_res, 2, 2, col);
     int *and = (int *)malloc(sizeof(int) * (2 * col));
-    //[[1,0,0,0,0,0,0,0],[0,1,1,1,1,1,1,1]]
-    //int val_and[] = {1,0,0,0,0,0,0,0,\
-    //                    0,1,1,1,1,1,1,1};
     for(int i = 0; i < col; i++)
     {
         if( i == 0)
         {
             and[i] = 1;
         }
-        and[i] = 0;
+        else{
+            and[i] = 0;
+        }
         pushArray(&and_res->m, &and[i]);
     }
     for(int i = col; i < 2 * col; i++)
@@ -442,8 +441,42 @@ matrix* andNMatrix(int n)
         {
             and[i] = 0;
         }
-        and[i] = 1;
+        else {
+            and[i] = 1;
+        }
         pushArray(&and_res->m, &and[i]);
     }
     return and_res;
+}
+
+//OR operator N
+matrix* orNMatrix(int n)
+{
+    matrix *or_res = (matrix *)malloc(sizeof(matrix));
+    int col = 1 << n;
+    initMatrixAttri(or_res, 2, 2, col);
+    int *or = (int *)malloc(sizeof(int) * (2 * col));
+    for(int i = 0; i < col; i++)
+    {
+        if( i == col - 1)
+        {
+            or[i] = 0;
+        }
+        else{
+            or[i] = 1;
+        }
+        pushArray(&or_res->m, &or[i]);
+    }
+    for(int i = col; i < 2 * col; i++)
+    {
+        if( i == 2 * col - 1)
+        {
+            or[i] = 1;
+        }
+        else{
+            or[i] = 0;
+        }
+        pushArray(&or_res->m, &or[i]);
+    }
+    return or_res;
 }

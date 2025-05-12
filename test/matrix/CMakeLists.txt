@@ -48,10 +48,14 @@ add_executable(matrixAndMatrix matrixAndMatrix.c)
 target_link_libraries(matrixAndMatrix ziMatrix)
 add_test(NAME MatrixTestsAndMatrix COMMAND matrixAndMatrix)
 
-add_executable(matrixShowDigitsMatrix matrixShowDigitsMatrix.c)
-target_link_libraries(matrixShowDigitsMatrix ziMatrix)
-add_test(NAME MatrixTestsShowDigitsMatrix COMMAND matrixShowDigitsMatrix)
-
 add_executable(matrixAndNMatrix matrixAndNMatrix.c)
 target_link_libraries(matrixAndNMatrix ziMatrix)
 add_test(NAME MatrixTestsAndNMatrix COMMAND matrixAndNMatrix)
+
+add_executable(matrixOrNMatrix matrixOrNMatrix.c)
+target_link_libraries(matrixOrNMatrix ziMatrix)
+add_test(NAME MatrixTestsOrNMatrix COMMAND matrixOrNMatrix)
+
+add_executable(matrixShowDigitsMatrix matrixShowDigitsMatrix.c)
+target_link_libraries(matrixShowDigitsMatrix ziMatrix)
+add_test(NAME MatrixTestsShowDigitsMatrix COMMAND matrixShowDigitsMatrix)
