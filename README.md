@@ -125,6 +125,8 @@ According to $a \ \sigma \ b = M_\sigma \ a \ b$, given boolean definition of **
 ```
 , and truth value of variable $a$ (**_TURE_**), $b$ (**_FALSE_**), apply **_AND_** to $a$, $b$, will result in **_FALSE_**.
 
+Note that the **_AND_** matrix could be generalized to support $n$ variables.
+
 ```C
 #include "matrix.h"
 
@@ -140,7 +142,7 @@ int main()
     char tt1[100] = "[[0],[1]]";
     readMatrix(mI0, tt0);
     readMatrix(mI1, tt1);
-    matrix *and = andMatrix();
+    matrix *and = andNMatrix(2);
     matrix *kPro_and_a = stpMatrix(and, mI0);
     matrix *res_and_a_b = stpMatrix(kPro_and_a, mI1);
     showDigitsArray(&res_and_a_b->m);

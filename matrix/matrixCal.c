@@ -417,18 +417,32 @@ matrix* eqMatrix()
     return eq_res;
 }
 
-//AND operator
-matrix* andMatrix()
+//AND operator N
+matrix* andNMatrix(int n)
 {
     matrix *and_res = (matrix *)malloc(sizeof(matrix));
-    initMatrixAttri(and_res, 2, 2, 4);
-    int *and = (int *)malloc(sizeof(int) * 8);
-    //[[1,0,0,0],[0,1,1,1]]
-    int val_and[] = {1,0,0,0,\
-                        0,1,1,1};
-    for(int i = 0; i < 8; i++)
+    int col = 1 << n;
+    initMatrixAttri(and_res, 2, 2, col);
+    int *and = (int *)malloc(sizeof(int) * (2 * col));
+    //[[1,0,0,0,0,0,0,0],[0,1,1,1,1,1,1,1]]
+    //int val_and[] = {1,0,0,0,0,0,0,0,\
+    //                    0,1,1,1,1,1,1,1};
+    for(int i = 0; i < col; i++)
     {
-        and[i] = val_and[i];
+        if( i == 0)
+        {
+            and[i] = 1;
+        }
+        and[i] = 0;
+        pushArray(&and_res->m, &and[i]);
+    }
+    for(int i = col; i < 2 * col; i++)
+    {
+        if( i == col)
+        {
+            and[i] = 0;
+        }
+        and[i] = 1;
         pushArray(&and_res->m, &and[i]);
     }
     return and_res;
