@@ -22,9 +22,11 @@ int main()
     matrix* twoStpT = stpMatrix(tMR, tML);
 
     assert(checkIdentityMatrix(twoStpT, tStpTwo) == 0);
+    clearMatrix(mL);
+    clearMatrix(mR);
     clearMatrix(tML);
     free(tML);
-    clearMatrix(mR);
+    clearMatrix(tMR);
     free(tMR);
     clearMatrix(stpTwo);
     free(stpTwo);

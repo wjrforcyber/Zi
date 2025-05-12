@@ -19,5 +19,6 @@ int main()
     clearMatrix(tM);
     free(tM);
     clearMatrix(mI);
+    clearMatrix(mRes);
     return 0;
 }
