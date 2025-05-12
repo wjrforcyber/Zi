@@ -52,7 +52,7 @@ int main()
     readMatrix(mI0, mS0);
     readMatrix(mI1, mS1);
     matrix* res = stpMatrix(mI0, mI1);
-    showDigitsArray(&res->m);
+    showDigitsMatrix(res);
     clearMatrix(mI0);
     clearMatrix(mI1);
     clearMatrix(res);
@@ -61,9 +61,11 @@ int main()
 ```
 The result will be
 ```bash
-Warning: Only proper on int type.
-Array contains:
-1 0 1 0 0 0 1 0 0 1 0 1 1 1 0 1
+Matrix contains:
+[
+[ 1, 0, 1, 0, 0, 0, 1, 0 ],
+[ 0, 1, 0, 1, 1, 1, 0, 1 ]
+]
 ```
 
 ### Boolean operator
@@ -102,7 +104,7 @@ int main()
     assert(readMatrix(mI0, mS0) == 0);
     matrix *not = notMatrix();
     matrix *res = stpMatrix(not, mI0);
-    showDigitsArray(&res->m);
+    showDigitsMatrix(res);
     clearMatrix(mI0);
     clearMatrix(res);
     free(res);
@@ -145,7 +147,7 @@ int main()
     matrix *and = andNMatrix(2);
     matrix *kPro_and_a = stpMatrix(and, mI0);
     matrix *res_and_a_b = stpMatrix(kPro_and_a, mI1);
-    showDigitsArray(&res_and_a_b->m);
+    showDigitsMatrix(res_and_a_b);
     clearMatrix(mI0);
     clearMatrix(mI1);
     clearMatrix(and);
