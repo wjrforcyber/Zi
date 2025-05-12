@@ -367,6 +367,8 @@ int checkIdentityMatrix(matrix* m0, matrix* m1)
     if(m0->dim != m1->dim || m0->row != m1->row || m0->col != m1->col)
     {
         printf("Dimension or attributes are not identical.\n");
+        printf("Matrix Left\t\tMtairx Right\t\t\n");
+        printf("Dim(%d %d)Row(%d %d)Col(%d %d)\n", m0->dim, m1->dim, m0->row, m1->row, m0->col, m1->col);
         return 1;
     }
     int i = 0;
@@ -381,7 +383,7 @@ int checkIdentityMatrix(matrix* m0, matrix* m1)
     return 0;
 }
 
-//NOT operator
+//STP: NOT operator
 matrix* notMatrix()
 {
     matrix *not_res = (matrix *)malloc(sizeof(matrix));
@@ -400,7 +402,7 @@ matrix* notMatrix()
 }
 
 
-//EQ operator
+//STP: EQ operator
 matrix* eqMatrix()
 {
     matrix *eq_res = (matrix *)malloc(sizeof(matrix));
@@ -417,7 +419,7 @@ matrix* eqMatrix()
     return eq_res;
 }
 
-//AND operator N
+//STP: AND operator N
 matrix* andNMatrix(int n)
 {
     matrix *and_res = (matrix *)malloc(sizeof(matrix));
@@ -449,7 +451,7 @@ matrix* andNMatrix(int n)
     return and_res;
 }
 
-//OR operator N
+//STP: OR operator N
 matrix* orNMatrix(int n)
 {
     matrix *or_res = (matrix *)malloc(sizeof(matrix));
@@ -479,4 +481,34 @@ matrix* orNMatrix(int n)
         pushArray(&or_res->m, &or[i]);
     }
     return or_res;
+}
+
+//Matrix transpose
+matrix * tMatrix(matrix * m)
+{
+    matrix *tRes = (matrix *)malloc(sizeof(matrix));
+    int newRow = m->col;
+    int newCol = m->row;
+    initMatrixAttri(tRes, 2, newRow, newCol);
+    int i,j;
+    int *t = (int *)malloc(sizeof(int) * (newRow * newCol));
+    MatrixForEachItemColRow( m, i, j )
+    {
+        t[i * m->row + j] = *getMatrixItemIndex(m, j, i);
+        pushArray(&tRes->m, &t[i * m->row + j] );
+    }
+    return tRes;
+}
+
+//STP: Matrix transpose property
+matrix * stpTwoTMatrix(matrix * m0, matrix *m1)
+{
+    matrix * tL = tMatrix(m0);
+    matrix * tR = tMatrix(m1);
+    matrix * res = stpMatrix(tL, tR);
+    clearMatrix(tL);
+    free(tL);
+    clearMatrix(tR);
+    free(tR);
+    return res;
 }

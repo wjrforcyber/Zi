@@ -56,6 +56,14 @@ add_executable(matrixOrNMatrix matrixOrNMatrix.c)
 target_link_libraries(matrixOrNMatrix ziMatrix)
 add_test(NAME MatrixTestsOrNMatrix COMMAND matrixOrNMatrix)
 
+add_executable(matrixTMatrix matrixTMatrix.c)
+target_link_libraries(matrixTMatrix ziMatrix)
+add_test(NAME MatrixTestsTMatrix COMMAND matrixTMatrix)
+
+add_executable(matrixStpTwoTMatrix matrixStpTwoTMatrix.c)
+target_link_libraries(matrixStpTwoTMatrix ziMatrix)
+add_test(NAME MatrixTestsStpTwoTMatrix COMMAND matrixStpTwoTMatrix)
+
 add_executable(matrixShowDigitsMatrix matrixShowDigitsMatrix.c)
 target_link_libraries(matrixShowDigitsMatrix ziMatrix)
 add_test(NAME MatrixTestsShowDigitsMatrix COMMAND matrixShowDigitsMatrix)

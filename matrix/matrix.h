@@ -31,8 +31,14 @@ matrix* notMatrix();
 matrix* eqMatrix();
 matrix* andNMatrix(int n);
 matrix* orNMatrix(int n);
+matrix * tMatrix(matrix * m);
+matrix * stpTwoTMatrix(matrix * m0, matrix *m1);
 int checkIdentityMatrix(matrix* m0, matrix* m1);
 
 #define MatrixForEachItem( m, i, j ) \
     for( i = 0; i < m->row; i++)        \
-        for( j = 0; j < m->col; j++)    \
+        for( j = 0; j < m->col; j++)
+
+#define MatrixForEachItemColRow( m, i, j ) \
+    for( i = 0; i < m->col; i++)        \
+        for( j = 0; j < m->row; j++)
