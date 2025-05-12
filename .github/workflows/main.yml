@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   test-project:
-    name: Array Interface tests
+    name: Overall Interface tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
