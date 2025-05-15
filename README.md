@@ -24,7 +24,7 @@ make test
 ```
 
 ## Example
-Some usage of the library will be shown here to give a minimum reproduceable example([MRE](https://en.wikipedia.org/wiki/Minimal_reproducible_example)), there's no proper documentation right now, if detailed usage example of the interface is needed, you check the interface test in `test` folder.
+Some usage of the library will be shown here to give a minimum reproduceable example([MRE](https://en.wikipedia.org/wiki/Minimal_reproducible_example)), there's no proper documentation right now, if detailed usage example of the interface is needed, you could check the interface test in `test` folder.
 ### Array
 Simple array reconstruct.
 ### Matrix
@@ -166,6 +166,14 @@ Matrix contains:
 [ 1 ]
 ]
 ```
+
+#### Other boolean operators/handy interface
+Besides **_AND_**(conjunction) and **_NOT_** operators mentioned above(which is already boolean complete), there are other handy interfaces for boolean algebra, here we only list some main interfaces.
+- [x] Get const1/const0 under $n$ variable context <br>`matrix* getConst1(int n)`/`matrix* getConst0(int n)`
+- [x] Boolean **_OR_**(Disjunction) operator under $n$ variables context <br>`matrix* orNMatrix(int n)`
+- [ ] Implication.
+- [x] Equivalence. <br>`matrix* eqMatrix(int n)`
+- [x] Show the truth table(matrix) <br>`int showDigitsMatrix(matrix* m0)`
 
 ## Contribution 
 Contribution is welcome but should illustrate three sections: Why, What and How before the review.

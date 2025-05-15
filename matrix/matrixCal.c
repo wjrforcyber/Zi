@@ -410,17 +410,33 @@ matrix* notMatrix()
 
 
 //STP: EQ operator
-matrix* eqMatrix()
+matrix* eqMatrix(int n)
 {
     matrix *eq_res = (matrix *)malloc(sizeof(matrix));
-    initMatrixAttri(eq_res, 2, 2, 4);
-    int *eq = (int *)malloc(sizeof(int) * 8);
-    //[[1,0,0,1],[0,1,1,0]]
-    int val_eq[] = {1,0,0,1,\
-                        0,1,1,0};
-    for(int i = 0; i < 8; i++)
+    int col = 1 << n;
+    initMatrixAttri(eq_res, 2, 2, 2 * col);
+    int *eq = (int *)malloc(sizeof(int) * 2 * col);
+    
+    for(int i = 0; i < col; i++)
     {
-        eq[i] = val_eq[i];
+        if(i == 0 || i == col - 1)
+        {
+            eq[i] = 1;
+        }
+        else {
+            eq[i] = 0;
+        }
+        pushArray(&eq_res->m, &eq[i]);
+    }
+    for(int i = col ; i < 2 * col; i++)
+    {
+        if(i == col || i == 2 * col -1)
+        {
+            eq[i] = 0;
+        }
+        else {
+            eq[i] = 1;
+        }
         pushArray(&eq_res->m, &eq[i]);
     }
     return eq_res;

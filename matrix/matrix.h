@@ -28,7 +28,7 @@ matrix* concatMatrixUDOutPlace(matrix* m0, matrix* m1);
 matrix* kProductMatrix(matrix* m0, matrix* m1);
 matrix* stpMatrix(matrix* m0, matrix* m1);
 matrix* notMatrix();
-matrix* eqMatrix();
+matrix* eqMatrix(int n);
 matrix* andNMatrix(int n);
 matrix* orNMatrix(int n);
 matrix * getConst1(int n);
