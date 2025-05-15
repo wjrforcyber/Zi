@@ -572,5 +572,7 @@ matrix * swapMatrix(int m, int n)
     {
         pushArray(&res->m, &res_i[i]);
     }
+    free(rowEncode);
+    free(colEncode);
     return res;
 }
