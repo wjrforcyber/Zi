@@ -11,8 +11,12 @@ add_link_options(-fsanitize=address)
 ADD_LIBRARY( ziArray STATIC array/array.c )
 include_directories(array)
 
-# array lib
-ADD_LIBRARY( ziMatrix STATIC matrix/matrix.c matrix/matrixCal.c array/array.c)
+# util lib
+ADD_LIBRARY( ziUtil STATIC util/utilMatrix.c)
+include_directories(util)
+
+# matrix lib
+ADD_LIBRARY( ziMatrix STATIC matrix/matrix.c matrix/matrixCal.c array/array.c util/utilMatrix.c)
 include_directories(matrix)
 
 include(CTest)

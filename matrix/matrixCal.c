@@ -1,6 +1,8 @@
 #include "matrix.h"
+#include "utilMatrix.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 //add matrix
 int addCheck(matrix* m0, matrix* m1)
@@ -510,5 +512,65 @@ matrix * stpTwoTMatrix(matrix * m0, matrix *m1)
     free(tL);
     clearMatrix(tR);
     free(tR);
+    return res;
+}
+
+//STP: Swap matrix m*n*m*n
+matrix * swapMatrix(int m, int n)
+{
+    matrix * res = (matrix *)malloc(sizeof(matrix));
+    int newRow = m*n;
+    int newCol = m*n;
+    initMatrixAttri(res, 2, newRow, newCol);
+    
+    //prepare the result matrix
+    int * res_i = (int *)malloc(sizeof(int) * newRow * newCol);
+    //All initialize to 0
+    memset(res_i, 0, sizeof(int) * newRow * newCol);
+
+    //set the new label of the row
+    int * rowEncode = (int *)malloc(sizeof(int) * newRow);
+    memset(rowEncode, 0, sizeof(int) * newRow);
+    //for row, n outer loop, m inner loop
+    int indexCount = 0;
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < m; j++)
+        {
+            int rowTemp = intConcatenate(j, i);
+            rowEncode[indexCount] = rowTemp;
+            indexCount++;
+        }
+    }
+    //set the new label of the col
+    int * colEncode = (int *)malloc(sizeof(int) * newCol);
+    memset(colEncode, 0, sizeof(int) * newCol);
+    indexCount = 0;
+    //for col, m outer loop, n inner loop
+    for(int i = 0; i < m; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            int colTemp = intConcatenate(i, j);
+            colEncode[indexCount] = colTemp;
+            indexCount++;
+        }
+    }
+    
+    for(int i = 0; i < newRow; i++)
+    {
+        for(int j = 0; j < newCol; j++)
+        {
+            if(rowEncode[i] == colEncode[j])
+            {
+                res_i[i * newCol + j] = 1;
+            }
+        }
+    }
+
+    for(int i = 0; i < newRow * newCol; i++)
+    {
+        pushArray(&res->m, &res_i[i]);
+    }
     return res;
 }

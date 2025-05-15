@@ -26,13 +26,14 @@ matrix* nTimesMatrixOutplace(matrix* m0, int n);
 matrix* concatMatrixLROutPlace(matrix* m0, matrix* m1);
 matrix* concatMatrixUDOutPlace(matrix* m0, matrix* m1);
 matrix* kProductMatrix(matrix* m0, matrix* m1);
-matrix * stpMatrix(matrix * m0, matrix * m1);
+matrix* stpMatrix(matrix* m0, matrix* m1);
 matrix* notMatrix();
 matrix* eqMatrix();
 matrix* andNMatrix(int n);
 matrix* orNMatrix(int n);
-matrix * tMatrix(matrix * m);
-matrix * stpTwoTMatrix(matrix * m0, matrix *m1);
+matrix* tMatrix(matrix* m);
+matrix* stpTwoTMatrix(matrix* m0, matrix* m1);
+matrix* swapMatrix(int m, int n);
 int checkIdentityMatrix(matrix* m0, matrix* m1);
 
 #define MatrixForEachItem( m, i, j ) \

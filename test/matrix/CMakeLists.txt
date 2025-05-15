@@ -64,6 +64,10 @@ add_executable(matrixStpTwoTMatrix matrixStpTwoTMatrix.c)
 target_link_libraries(matrixStpTwoTMatrix ziMatrix)
 add_test(NAME MatrixTestsStpTwoTMatrix COMMAND matrixStpTwoTMatrix)
 
+add_executable(matrixSwapMatrix matrixSwapMatrix.c)
+target_link_libraries(matrixSwapMatrix ziMatrix)
+add_test(NAME MatrixSwapMatrix COMMAND matrixSwapMatrix)
+
 add_executable(matrixShowDigitsMatrix matrixShowDigitsMatrix.c)
 target_link_libraries(matrixShowDigitsMatrix ziMatrix)
 add_test(NAME MatrixTestsShowDigitsMatrix COMMAND matrixShowDigitsMatrix)
