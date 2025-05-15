@@ -332,6 +332,11 @@ matrix* kProductMatrix(matrix* m0, matrix* m1)
 //semi-tensor product
 matrix * stpMatrix(matrix * m0, matrix * m1)
 {
+    //special case
+    if(m0->col == m1->row)
+    {
+        return productMatrix(m0, m1);
+    }
     //get the lCM
     int lcm = m0->col > m1->row ? m0->col: m1->row;
     while(lcm % m0->col != 0 || lcm % m1->row != 0)
@@ -370,7 +375,7 @@ int checkIdentityMatrix(matrix* m0, matrix* m1)
     {
         printf("Dimension or attributes are not identical.\n");
         printf("Matrix Left\t\tMtairx Right\t\t\n");
-        printf("Dim(%d %d)Row(%d %d)Col(%d %d)\n", m0->dim, m1->dim, m0->row, m1->row, m0->col, m1->col);
+        printf("Dim(%d %d)\t\tRow(%d %d)\t\tCol(%d %d)\n", m0->dim, m1->dim, m0->row, m1->row, m0->col, m1->col);
         return 1;
     }
     int i = 0;
@@ -485,6 +490,42 @@ matrix* orNMatrix(int n)
     return or_res;
 }
 
+//STP: CONST1 N
+matrix * getConst1(int n)
+{
+    int col = 1 << n;
+    matrix * const1;
+    const1 = (matrix *)malloc(sizeof(matrix));
+    initMatrixAttri(const1, 2, 2, col);
+    int *const_res = (int *)malloc(sizeof(int) * 2 * col);
+    for(int i = 0; i < 2 * col; i++)
+    {
+        if(i < col)
+        {
+            const_res[i] = 1;
+        }
+        else {
+            const_res[i] = 0;
+        }
+        pushArray(&const1->m, &const_res[i]);
+    }
+    return const1;
+}
+
+//STP: CONST0 N
+matrix * getConst0(int n)
+{
+    matrix * not = notMatrix();
+    matrix * const1 = getConst1(n);
+    showDigitsMatrix(const1);
+    matrix * const0 = stpMatrix(not, const1);
+    clearMatrix(const1);
+    free(const1);
+    clearMatrix(not);
+    free(not);
+    return const0;
+}
+
 //Matrix transpose
 matrix * tMatrix(matrix * m)
 {
@@ -556,7 +597,7 @@ matrix * swapMatrix(int m, int n)
             indexCount++;
         }
     }
-    
+
     for(int i = 0; i < newRow; i++)
     {
         for(int j = 0; j < newCol; j++)

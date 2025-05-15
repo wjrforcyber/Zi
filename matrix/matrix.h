@@ -31,6 +31,8 @@ matrix* notMatrix();
 matrix* eqMatrix();
 matrix* andNMatrix(int n);
 matrix* orNMatrix(int n);
+matrix * getConst1(int n);
+matrix * getConst0(int n);
 matrix* tMatrix(matrix* m);
 matrix* stpTwoTMatrix(matrix* m0, matrix* m1);
 matrix* swapMatrix(int m, int n);

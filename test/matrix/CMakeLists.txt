@@ -68,6 +68,10 @@ add_executable(matrixSwapMatrix matrixSwapMatrix.c)
 target_link_libraries(matrixSwapMatrix ziMatrix)
 add_test(NAME MatrixSwapMatrix COMMAND matrixSwapMatrix)
 
+add_executable(matrixGetConstMatrix matrixGetConstMatrix.c)
+target_link_libraries(matrixGetConstMatrix ziMatrix)
+add_test(NAME MatrixGetConstMatrix COMMAND matrixGetConstMatrix)
+
 add_executable(matrixShowDigitsMatrix matrixShowDigitsMatrix.c)
 target_link_libraries(matrixShowDigitsMatrix ziMatrix)
 add_test(NAME MatrixTestsShowDigitsMatrix COMMAND matrixShowDigitsMatrix)
