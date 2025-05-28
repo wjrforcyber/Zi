@@ -2,6 +2,8 @@
 #include <assert.h>
 int main()
 {
+    int i;
+    int resCheck;
     char mL[100] = "[[ 1     ,2, 3 ],[ 2, 4,6   ]]";
     char mR[100] = "[[ 1     ,2], [3 , 4],[ 5 ,6   ]]";
     char mWrong[100] = "[[ 1     ,2, 3 ],[ 2, 4,6   ]]";
@@ -26,7 +28,10 @@ int main()
     assert(readMatrix(mIWrong, mWrong) == 0);
     assert(productMatrix(mIL, mIWrong) == NULL);
     matrix * pRes = productMatrix(mIL, mIR);
-    assert(checkIdentityArray(&pRes->m, &resA) == 0);
+    ziArray * p1 = &pRes->m;
+    ziArray* p2 = &resA;
+    ArraryCheckIndentity(p1, p2, int *, i, &resCheck);
+    assert(resCheck == 0);
     assert(clearArray(&resA) == 0);
     assert(clearMatrix(mIL) == 0);
     assert(clearMatrix(mIR) == 0);

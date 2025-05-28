@@ -3,6 +3,7 @@
 
 int main()
 {
+    int resCheck,i;
     matrix test;
     matrix* mI = &test;
     //give wired example to test scalability
@@ -45,14 +46,25 @@ int main()
     initArray(&col2, 8);
     assert(fetchMatrixRow(mI, 0, &row0) == 0 );
     assert(fetchMatrixRow(mI, 1, &row1) == 0 );
-    assert(checkIdentityArray(&row0, &originCheck0) == 0);
-    assert(checkIdentityArray(&row1, &originCheck1) == 0);
+    ziArray * p1 = &row0;
+    ziArray* p2 = &originCheck0;
+    ArraryCheckIndentity(p1, p2, int *, i, &resCheck);
+    assert(resCheck == 0);
+    p1 = &row1;
+    p2 = &originCheck1;
+    ArraryCheckIndentity(p1, p2, int *, i, &resCheck);
+    assert(resCheck == 0);
     
     assert(fetchMatrixCol(mI, 0, &col0) == 0 );
     assert(fetchMatrixCol(mI, 2, &col2) == 0 );
-    
-    assert(checkIdentityArray(&col0, &originCheckCol0) == 0);
-    assert(checkIdentityArray(&col2, &originCheckCol2) == 0);
+    p1 = &col0;
+    p2 = &originCheckCol0;
+    ArraryCheckIndentity(p1, p2, int *, i, &resCheck);
+    assert(resCheck == 0);
+    p1 = &col2;
+    p2 = &originCheckCol2;
+    ArraryCheckIndentity(p1, p2, int *, i, &resCheck);
+    assert(resCheck == 0);
 
     
     clearArray(&row0);

@@ -15,10 +15,10 @@ int main()
     assert(pushArray(ptr, &item2) == 0);
     assert(ptr->size == 3);
     assert(insertIndexArray(ptr, 1, &item_insert) == 0);
-    assert(*fetchIndexArray(ptr, 0) == 10);
-    assert(*fetchIndexArray(ptr, 1) == 999);
-    assert(*fetchIndexArray(ptr, 2) == 8);
-    assert(*fetchIndexArray(ptr, 3) == 6);
+    assert(*(int *)fetchIndexArray(ptr, 0) == 10);
+    assert(*(int *)fetchIndexArray(ptr, 1) == 999);
+    assert(*(int *)fetchIndexArray(ptr, 2) == 8);
+    assert(*(int *)fetchIndexArray(ptr, 3) == 6);
     assert(ptr->size == 4);
     clearArray(ptr);
     return 0;

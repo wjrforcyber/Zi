@@ -51,7 +51,7 @@ matrix* addMatrix(matrix* m0, matrix* m1)
         //extendArray(&mR->m, addRow);
         for(int k = 0; k < addRow->size; k++)
         {
-            restruct[r * m0->col + k] = *fetchIndexArray(addRow, k);
+            restruct[r * m0->col + k] = *(int *)fetchIndexArray(addRow, k);
         }
         clearArray(&r0);
         clearArray(&r1);

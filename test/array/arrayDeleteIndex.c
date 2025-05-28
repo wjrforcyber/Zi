@@ -14,8 +14,8 @@ int main()
     assert(pushArray(ptr, &item2) == 0);
     assert(ptr->size == 3);
     assert(deleteIndexArray(ptr, 1) == 0);
-    assert(*fetchIndexArray(ptr, 0) == 10);
-    assert(*fetchIndexArray(ptr, 1) == 6);
+    assert(*(int *)fetchIndexArray(ptr, 0) == 10);
+    assert(*(int *)fetchIndexArray(ptr, 1) == 6);
     assert(ptr->size == 2);
     clearArray(ptr);
     return 0;

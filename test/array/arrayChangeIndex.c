@@ -16,9 +16,9 @@ int main()
     assert(ptr->size == 3);
     assert(changeIndexArray(ptr, 5, &item_change) == 1);
     assert(changeIndexArray(ptr, 1, &item_change) == 0);
-    assert(*fetchIndexArray(ptr, 0) == 10);
-    assert(*fetchIndexArray(ptr, 1) == 999);
-    assert(*fetchIndexArray(ptr, 2) == 6);
+    assert(*(int *)fetchIndexArray(ptr, 0) == 10);
+    assert(*(int *)fetchIndexArray(ptr, 1) == 999);
+    assert(*(int *)fetchIndexArray(ptr, 2) == 6);
     assert(ptr->size == 3);
     clearArray(ptr);
     return 0;

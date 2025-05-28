@@ -3,6 +3,7 @@
 
 int main()
 {
+    int i, resCheck;
     matrix test0;
     matrix* mI0 = &test0;
     
@@ -23,7 +24,10 @@ int main()
     {
         pushArray(&resComp, &resI[i]);
     }
-    assert(checkIdentityArray(&res->m, &resComp) == 0);
+    ziArray * p1 = &res->m;
+    ziArray* p2 = &resComp;
+    ArraryCheckIndentity(p1, p2, int *, i, &resCheck);
+    assert(resCheck == 0);
     clearArray(&resComp);
     clearMatrix(mI0);
     clearMatrix(mI1);

@@ -123,7 +123,7 @@ int deleteIndexArray(ziArray* a, int index)
 }
 
 //remove an item in a specific position index
-int * fetchIndexArray(ziArray* a, int index)
+void * fetchIndexArray(ziArray* a, int index)
 {
     if(index >= a->size)
     {
@@ -142,24 +142,6 @@ int changeIndexArray(ziArray* a, int index, void *item)
         return 1;
     }
     a->c_ptr[index] = item;
-    return 0;
-}
-
-//check the identity of two arrays
-int checkIdentityArray(ziArray* a, ziArray* b)
-{
-    if(a->size != b->size)
-    {
-        printf("Two arrays have different size.\n");
-        return 1;
-    }
-    for(int i = 0; i < a->size; i++)
-    {
-        if(*fetchIndexArray(a, i) != *fetchIndexArray(b, i))
-        {
-            return 1;
-        }
-    }
     return 0;
 }
 
@@ -185,7 +167,7 @@ ziArray* addArray(ziArray* a, ziArray* b)
     }
     for(int i = 0; i < a->size; i++)
     {
-        res_ini[i] = *fetchIndexArray(a, i) + *fetchIndexArray(b, i);
+        res_ini[i] = *(int *)fetchIndexArray(a, i) + *(int *)fetchIndexArray(b, i);
         pushArray(res, &res_ini[i]);
     }
     return res;
@@ -205,7 +187,7 @@ int productIntArray(ziArray* a, ziArray* b)
     {
         ArrayForEachItem(b, i)
         {
-            res += (*fetchIndexArray(a, i)) * (*fetchIndexArray(b, i));
+            res += (*(int *)fetchIndexArray(a, i)) * (*(int *)fetchIndexArray(b, i));
         }
     }
     return res;
@@ -235,10 +217,10 @@ int showDigitsArray(ziArray* a)
     {
         if(index == a->size - 1)
         {
-            printf("%d\n", *fetchIndexArray(a, index));
+            printf("%d\n", *(int *)fetchIndexArray(a, index));
         }
         else {
-            printf("%d ", *fetchIndexArray(a, index));
+            printf("%d ", *(int *)fetchIndexArray(a, index));
         }
     }
     return 0;
