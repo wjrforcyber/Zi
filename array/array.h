@@ -17,6 +17,7 @@ struct ziArray_
 int initArray(ziArray* a, const int size);
 int initArrayFillZero(ziArray* a, const int fillSize);
 int clearArray(ziArray* a);
+int clearEachEntryArray(ziArray *a);
 int clearExtendArray(ziArray *a);
 int growArray(ziArray* a, size_t capTarget);
 int pushArray(ziArray* a, void* item);
@@ -39,6 +40,6 @@ int showDigitsArray(ziArray* a);
         ArrayForEachItem( a, i ) \
         { \
             if(*(ItemType)fetchIndexArray(a, i) != *(ItemType)fetchIndexArray(b, i)) {*res = 1;} \
-            else{ *res = 0 ;} \
         } \
+        *res = 0; \
     }

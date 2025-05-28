@@ -19,5 +19,9 @@ include_directories(util)
 ADD_LIBRARY( ziMatrix STATIC matrix/matrix.c matrix/matrixCal.c array/array.c util/utilMatrix.c)
 include_directories(matrix)
 
+# tree lib
+ADD_LIBRARY( ziTree STATIC tree/bst/bst.c array/array.c)
+include_directories(tree/bst)
+
 include(CTest)
 add_subdirectory(test)

@@ -42,6 +42,22 @@ int clearArray(ziArray *a)
     return 0;
 }
 
+//clear an array with each entry in it
+int clearEachEntryArray(ziArray *a)
+{
+    int i;
+    ArrayForEachItem(a, i)
+    {
+        free(fetchIndexArray(a, i));
+    }
+    free(a->c_ptr);
+    a->c_ptr = NULL;
+    a->cap = 0;
+    a->size = 0;
+    a->typeSize = 0;
+    return 0;
+}
+
 //clear an array content
 int clearExtendArray(ziArray *a)
 {

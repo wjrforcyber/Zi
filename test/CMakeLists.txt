@@ -1,7 +1,9 @@
 include_directories(${CMAKE_SOURCE_DIR}/array)
 include_directories(${CMAKE_SOURCE_DIR}/util)
 include_directories(${CMAKE_SOURCE_DIR}/matrix)
+include_directories(${CMAKE_SOURCE_DIR}/tree/bst)
 
 add_subdirectory(array)
 add_subdirectory(util)
 add_subdirectory(matrix)
+add_subdirectory(tree)
