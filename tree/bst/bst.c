@@ -105,6 +105,7 @@ bstTree* initBstTree( ziArray* data )
 void clearBstTree( bstTree* pTree )
 {
     clearEachEntryArray(pTree->pAllNodes);
+    free(pTree->pAllNodes);
     free(pTree);
 }
 

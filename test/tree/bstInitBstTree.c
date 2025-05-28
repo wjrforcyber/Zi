@@ -34,5 +34,6 @@ int main()
     clearBstTree(tree);
     clearArray(pA);
     clearArray(res);
+    clearArray(tarRes);
     return 0;
 }
