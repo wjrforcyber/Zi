@@ -4,7 +4,7 @@
 ## Introduction
 C Zi library, named after "子鼠", is designed for the Synthesis and Verification Libraries of Zodiac Program.
 
-Zi contains some of the basic data structures implemented in C, which will help algorithm implementation become easier.
+Zi contains some basic data structures implemented in C, which will help algorithm implementation become easier.
 
 > [!WARNING]
 > This work is still in its early stage and designed for my own needs. Some datatype may not even be supported, if so, report an issue.
@@ -24,13 +24,42 @@ make test
 ```
 
 ## Example
-Some usage of the library will be shown here to give a minimum reproduceable example([MRE](https://en.wikipedia.org/wiki/Minimal_reproducible_example)), there's no proper documentation right now, if detailed usage example of the interface is needed, you could check the interface test in `test` folder.
-### Array
-Simple array reconstruct.
-### Matrix
-Matirx can be read from a string, every row of the matrix is wrapped by $[$ and $]$, when reading a matrix, no need to worry about the space between numbers, it will be automatically normalized. 
+Some usage of the library will be shown here to give a minimum reproducible example([MRE](https://en.wikipedia.org/wiki/Minimal_reproducible_example)), there's no proper documentation right now, if detailed usage example of the interface is needed, you could check the interface test in `test` folder.
+> [!IMPORTANT]
+> Arbitrary feature should be enabled if possible, so in most of the case, pointers are extensively used, original data should be separated from the data structure here, still WIP.
 
-### Semi-tensor product
+> [!NOTE]
+> Sections are collapsed if there's long examples, click on the section name to expand.
+
+### Array
+Simple arbitrary array reconstruct.
+- [x] Add
+- [x] Delete
+- [x] Get
+- [x] Modify
+### Tree
+Some tree structure such as
+- [x] BST(Binary Search Tree)
+- [ ] AVL Tree(Self-balancing Binary Search Tree)
+- [ ] Red-black tree
+### Matrix
+Matrix can be read from a string, every row of the matrix is wrapped by $[$ and $]$, when reading a matrix, no need to worry about the space between numbers, it will be automatically normalized. 
+- [x] Read a matrix
+You could read matrix without worrying about the space between, it will automatically be normalized, eg, `[[ 1     ,2, 3 ],[ 2, 4,6   ]]` is good to go.
+- [x] Add two matrix
+- [x] Concatenate matrix Left-Right/Up-Down
+- [x] Show a matrix
+
+
+> [!CAUTION]
+> Now most of the matrix implementation is on `int` type and two dimension, in the future it should be arbitrary. However, in boolean algebra context, `int` type is enough.
+
+<details>
+  <summary>
+    <h3>
+      Semi-tensor product
+    </h3>
+  </summary>
 
 ```C
 #include "matrix.h"
@@ -174,6 +203,7 @@ Besides **_AND_**(conjunction) and **_NOT_** operators mentioned above(which is 
 - [ ] Implication.
 - [x] Equivalence. <br>`matrix* eqMatrix(int n)`
 - [x] Show the truth table(matrix) <br>`int showDigitsMatrix(matrix* m0)`
+</details>
 
 ## Contribution 
 Contribution is welcome but should illustrate three sections: Why, What and How before the review.
