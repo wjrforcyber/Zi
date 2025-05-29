@@ -54,12 +54,8 @@ You could read matrix without worrying about the space between, it will automati
 > [!CAUTION]
 > Now most of the matrix implementation is on `int` type and two dimension, in the future it should be arbitrary. However, in boolean algebra context, `int` type is enough.
 
-<details>
-  <summary>
-    <h3>
-      Semi-tensor product
-    </h3>
-  </summary>
+
+### Semi-tensor product
 
 ```C
 #include "matrix.h"
@@ -203,7 +199,6 @@ Besides **_AND_**(conjunction) and **_NOT_** operators mentioned above(which is 
 - [ ] Implication.
 - [x] Equivalence. <br>`matrix* eqMatrix(int n)`
 - [x] Show the truth table(matrix) <br>`int showDigitsMatrix(matrix* m0)`
-</details>
 
 ## Contribution 
 Contribution is welcome but should illustrate three sections: Why, What and How before the review.
