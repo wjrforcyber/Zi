@@ -109,7 +109,7 @@ void clearBstTree( bstTree* pTree )
     free(pTree);
 }
 
-//show the bst tree in inorder
+//show the bst tree in inorder(For n node tree, takes Theta(n) time - Theorem 12.1)
 void collectInOrder( bstNode* pRoot, ziArray* pArray)
 {
     if(isNilBstNode(pRoot) != 1)
@@ -149,4 +149,35 @@ void inOrderBstTree( bstTree* pTree, ziArray* pArray )
     initArray(pArray, 100);
     collectInOrder(pTree->pRoot, pArray);
     showDigitsArrayBstNode(pArray);
+}
+
+//tree search node, if return NIL(Not found), else found.
+bstNode* searchBstTreeRec( bstNode* pRoot, int* pTarget )
+{
+    if(isNilBstNode(pRoot) || *(int *)pRoot->pData == *pTarget)
+    {
+        return pRoot;
+    }
+    if(*pTarget <= *(int *)pRoot->pData)
+    {
+        return searchBstTreeRec(pRoot->lBstNode, pTarget);
+    }
+    else {
+        return searchBstTreeRec(pRoot->rBstNode, pTarget);
+    }
+}
+//expose the unrolled iterative way, which is more efficient than the recursive method above. (O(h))
+bstNode* searchBstTreeIter( bstNode* pRoot, int* pTarget )
+{
+    while(!isNilBstNode(pRoot) && (*pTarget != *(int *)pRoot->pData))
+    {
+        if(*pTarget <= *(int *)pRoot->pData)
+        {
+            pRoot = pRoot->lBstNode;
+        }
+        else {
+            pRoot = pRoot->rBstNode;
+        }
+    }
+    return pRoot;
 }

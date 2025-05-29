@@ -25,6 +25,8 @@ bstNode* getNilNode( bstTree * pTree);
 bstTree* initBstTree( ziArray * data );
 void clearBstTree( bstTree* pTree );
 void inOrderBstTree( bstTree* pTree, ziArray* pArray );
+bstNode* searchBstTreeRec( bstNode* pRoot,int* pTarget );
+bstNode* searchBstTreeIter( bstNode* pRoot, int* pTarget );
 
 #define bstNodeCompare( a, b, ItemType, res) \
     if(*(ItemType)(a->pData) >= *(ItemType)(b->pData)) {*res = 1;} \
