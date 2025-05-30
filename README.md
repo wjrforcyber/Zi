@@ -1,5 +1,6 @@
 # Zi
 ![Zi Lib CTests](https://github.com/wjrforcyber/Zi/actions/workflows/main.yml/badge.svg)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/wjrforcyber/Zi)
 
 ## Introduction
 C Zi library, named after "子鼠", is designed for the Synthesis and Verification Libraries of Zodiac Program.
