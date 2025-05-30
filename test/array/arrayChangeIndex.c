@@ -1,8 +1,8 @@
-#include "array.h"
 #include <assert.h>
 
-int main()
-{
+#include "array.h"
+
+int main() {
     int item0 = 10;
     int item1 = 8;
     int item2 = 6;

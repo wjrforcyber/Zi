@@ -1,18 +1,18 @@
 #include "matrix.h"
+
 #include <assert.h>
 #include <stdio.h>
 
-int main()
-{
+int main() {
     matrix test0;
-    matrix* mI0 = &test0;
+    matrix *mI0 = &test0;
     matrix test1;
-    matrix* mI1 = &test1;
+    matrix *mI1 = &test1;
     matrix testRes;
-    matrix* mRes = &testRes;
-    //f_tt0 = [[1],[0]] True
+    matrix *mRes = &testRes;
+    // f_tt0 = [[1],[0]] True
     char tt0[100] = "[[1],[0]]";
-    //f_tt1 = [[0],[1]] False
+    // f_tt1 = [[0],[1]] False
     char tt1[100] = "[[0],[1]]";
     // True & False
     char andRes[100] = "[[0],[1]]";

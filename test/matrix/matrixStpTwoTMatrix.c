@@ -1,14 +1,14 @@
 #include "matrix.h"
+
 #include <assert.h>
 #include <stdlib.h>
 
-int main()
-{
+int main() {
     matrix m0;
     matrix* mL = &m0;
     matrix m1;
     matrix* mR = &m1;
-    //give wired example to test scalability
+    // give wired example to test scalability
     char mLR[100] = "[[ 1     ,2, 3 ],[ 2, 4,6   ]]";
     char mRR[100] = "[[ 1     ,2 ],[ 2, 4],[  3,6   ]]";
     assert(readMatrix(mL, mLR) == 0);

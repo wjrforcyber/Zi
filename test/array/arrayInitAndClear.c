@@ -1,18 +1,16 @@
-#include "array.h"
 #include <assert.h>
 
-//simple init and clear
-int main()
-{
+#include "array.h"
+
+// simple init and clear
+int main() {
     ziArray origin;
     ziArray *a = &origin;
-    if(initArray(a, 8) !=0)
-    {
+    if (initArray(a, 8) != 0) {
         return 1;
     }
     assert(a->cap == INCREASE_RATE * 8);
-    if(clearArray(a) != 0)
-    {
+    if (clearArray(a) != 0) {
         return 1;
     }
     assert(a->c_ptr == NULL);

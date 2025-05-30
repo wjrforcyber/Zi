@@ -1,7 +1,7 @@
-#include "array.h"
 #include <assert.h>
-int main()
-{
+
+#include "array.h"
+int main() {
     int item = 10;
     int item_modify = 12;
     ziArray a;

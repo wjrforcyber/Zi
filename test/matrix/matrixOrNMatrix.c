@@ -1,9 +1,9 @@
 #include "matrix.h"
+
 #include <assert.h>
 #include <stdio.h>
 
-int main()
-{
+int main() {
     matrix test0;
     matrix* mI0 = &test0;
     matrix test1;
@@ -31,14 +31,14 @@ int main()
 
     assert(readMatrix(mRes0, orRes0) == 0);
     assert(readMatrix(mRes1, orRes1) == 0);
-    
-    matrix *or = orNMatrix(3);
-    matrix *kPro_or_a = stpMatrix(or, mI0);
-    matrix *kPro_or_a_b = stpMatrix(kPro_or_a, mI1);
-    //1
-    matrix *res0_or_a_b_c = stpMatrix(kPro_or_a_b, mI2);
-    //0
-    matrix *res1_or_a_b_c = stpMatrix(kPro_or_a_b, mI3);
+
+    matrix* or = orNMatrix(3);
+    matrix* kPro_or_a = stpMatrix(or, mI0);
+    matrix* kPro_or_a_b = stpMatrix(kPro_or_a, mI1);
+    // 1
+    matrix* res0_or_a_b_c = stpMatrix(kPro_or_a_b, mI2);
+    // 0
+    matrix* res1_or_a_b_c = stpMatrix(kPro_or_a_b, mI3);
 
     showDigitsMatrix(res0_or_a_b_c);
     showDigitsMatrix(res1_or_a_b_c);

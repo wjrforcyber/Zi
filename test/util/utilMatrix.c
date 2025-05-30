@@ -1,8 +1,8 @@
 #include "utilMatrix.h"
+
 #include <assert.h>
 
-int main()
-{
+int main() {
     int a = 15;
     int b = 26;
     int res = intConcatenate(a, b);

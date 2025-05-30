@@ -1,17 +1,17 @@
 #include "matrix.h"
+
 #include <assert.h>
 
-int main()
-{
+int main() {
     matrix test0;
     matrix* mI0 = &test0;
-    
+
     matrix test1;
     matrix* mI1 = &test1;
-    
+
     matrix testRes;
     matrix* mRes = &testRes;
-    //give wired example to test scalability
+    // give wired example to test scalability
     char mS0[100] = "[[1,0,0,0],[0,1,1,1]]";
     char mS1[100] = "[[1,1,0,1],[0,0,1,0]]";
     char mSRes[500] = "[[1,0,1,0,0,0,1,0],[0,1,0,1,1,1,0,1]]";

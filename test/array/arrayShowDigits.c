@@ -1,7 +1,7 @@
-#include "array.h"
 #include <assert.h>
-int main()
-{
+
+#include "array.h"
+int main() {
     int item0 = 2;
     int item1 = 4;
     int item2 = 6;
@@ -14,8 +14,8 @@ int main()
     assert(ptr->size == 3);
     assert(showDigitsArray(ptr) == 0);
     assert(clearArray(ptr) == 0);
-    
-    int aI[10] = {1,2,0};
+
+    int aI[10] = {1, 2, 0};
     ziArray aICur;
     ziArray *ptrCur = &aICur;
     assert(initArray(ptrCur, 8) == 0);
@@ -25,8 +25,6 @@ int main()
     assert(ptrCur->size == 3);
     assert(showDigitsArray(ptrCur) == 0);
     assert(clearArray(ptrCur) == 0);
-    
-    
-    
+
     return 0;
 }

@@ -1,9 +1,9 @@
 #include "matrix.h"
+
 #include <assert.h>
 #include <stdio.h>
 
-int main()
-{
+int main() {
     matrix test0;
     matrix* mI0 = &test0;
     matrix test1;
@@ -22,10 +22,10 @@ int main()
     assert(readMatrix(mI1, tt1) == 0);
     assert(readMatrix(mI2, tt2) == 0);
     assert(readMatrix(mRes, andRes) == 0);
-    matrix *and = andNMatrix(3);
-    matrix *kPro_and_a = stpMatrix(and, mI0);
-    matrix *kPro_and_a_b = stpMatrix(kPro_and_a, mI1);
-    matrix *res_and_a_b_c = stpMatrix(kPro_and_a_b, mI2);
+    matrix*and = andNMatrix(3);
+    matrix* kPro_and_a = stpMatrix(and, mI0);
+    matrix* kPro_and_a_b = stpMatrix(kPro_and_a, mI1);
+    matrix* res_and_a_b_c = stpMatrix(kPro_and_a_b, mI2);
 
     showDigitsMatrix(res_and_a_b_c);
     assert(checkIdentityMatrix(mRes, res_and_a_b_c) == 0);
