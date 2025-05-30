@@ -7,3 +7,7 @@ add_test(NAME BstTestsInitBstTree COMMAND bstInitBstTree)
 add_executable(bstSearchBstTree bstSearchBstTree.c)
 target_link_libraries(bstSearchBstTree ziTree)
 add_test(NAME BstTestsSearchBstTree COMMAND bstSearchBstTree)
+
+add_executable(bstGetMinMaxNodeBstTree bstGetMinMaxNodeBstTree.c)
+target_link_libraries(bstGetMinMaxNodeBstTree ziTree)
+add_test(NAME BstGetMinMaxNodeBstTree COMMAND bstGetMinMaxNodeBstTree)

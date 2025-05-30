@@ -181,3 +181,22 @@ bstNode* searchBstTreeIter( bstNode* pRoot, int* pTarget )
     }
     return pRoot;
 }
+
+//get the maximum/minimum node
+bstNode* getMaxMinMaxNodeBstTree( bstNode* pRoot, int max )
+{
+    if( max == 1 )
+    {
+        while( isNilBstNode(pRoot->rBstNode) == 0 )
+        {
+            pRoot = pRoot->rBstNode;
+        }
+    }
+    else {
+        while( isNilBstNode(pRoot->lBstNode) == 0 )
+        {
+            pRoot = pRoot->lBstNode;
+        }
+    }
+    return pRoot;
+}
