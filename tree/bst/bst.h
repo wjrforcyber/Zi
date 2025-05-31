@@ -6,6 +6,7 @@ struct bstNode_ {
     int isNil;
     bstNode* lBstNode;
     bstNode* rBstNode;
+    bstNode* pBstNode;
     void* pData;
 };
 
@@ -27,6 +28,7 @@ void inOrderBstTree(bstTree* pTree, ziArray* pArray);
 bstNode* searchBstTreeRec(bstNode* pRoot, int* pTarget);
 bstNode* searchBstTreeIter(bstNode* pRoot, int* pTarget);
 bstNode* getMaxMinMaxNodeBstTree(bstNode* pRoot, int max);
+bstNode* getSucPreNodeBstTree(bstNode* pRoot, int suc);
 #define bstNodeCompare(a, b, ItemType, res)               \
     if (*(ItemType)(a->pData) >= *(ItemType)(b->pData)) { \
         *res = 1;                                         \

@@ -8,6 +8,7 @@ void assertBstTree(bstTree* pTree, bstNode* pItem) {
         pTree->pRoot = pItem;
         pItem->lBstNode = getNilNode(pTree);
         pItem->rBstNode = getNilNode(pTree);
+        pItem->pBstNode = getNilNode(pTree);
     }
 
     // non-empty tree
@@ -36,6 +37,7 @@ void assertBstTree(bstTree* pTree, bstNode* pItem) {
     isLeft == 1 ? (preStep->lBstNode = pItem) : (preStep->rBstNode = pItem);
     pItem->lBstNode = getNilNode(pTree);
     pItem->rBstNode = getNilNode(pTree);
+    pItem->pBstNode = preStep;
 }
 
 // retrieve the NIL node
@@ -168,4 +170,41 @@ bstNode* getMaxMinMaxNodeBstTree(bstNode* pRoot, int max) {
         }
     }
     return pRoot;
+}
+
+//get succ/pred node
+bstNode* getSucPreNodeBstTree(bstNode* pRoot, int suc){
+    bstNode* sucPre = NULL;
+    if(suc == 1)
+    {
+        if(isNilBstNode(pRoot->rBstNode) == 0)
+        {
+            sucPre = getMaxMinMaxNodeBstTree(pRoot->rBstNode, 0);
+        }
+        else {
+            bstNode * parent = pRoot->pBstNode;
+            while( isNilBstNode(parent) != 0 && pRoot == parent->rBstNode )
+            {
+                pRoot = parent;
+                parent = parent->pBstNode;
+            }
+            sucPre = parent;
+        }
+    }
+    else {
+        if(isNilBstNode(pRoot->lBstNode) == 0)
+        {
+            sucPre = getMaxMinMaxNodeBstTree(pRoot->lBstNode, 1);
+        }
+        else {
+            bstNode * parent = pRoot->pBstNode;
+            while( isNilBstNode(parent) != 0 && pRoot == parent->lBstNode )
+            {
+                pRoot = parent;
+                parent = parent->pBstNode;
+            }
+            sucPre = parent;
+        }
+    }
+    return sucPre;
 }
