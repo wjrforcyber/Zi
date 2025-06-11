@@ -29,7 +29,10 @@ int productIntArray(ziArray* a, ziArray* b);
 int extendArray(ziArray* ori, ziArray* extra);
 int showDigitsArray(ziArray* a);
 
+enum ITEM_TYPE { HEX, DEC };
+
 #define ArrayForEachItem(a, i) for (i = 0; i < a->size; i++)
+#define ArrayForEachItemStart(a, i, iStart) for (i = iStart; i < a->size; i++)
 
 #define ArraryCheckIndentity(a, b, ItemType, i, res) \
     if (a->size != b->size) {                        \
@@ -55,4 +58,21 @@ int showDigitsArray(ziArray* a);
         if (*(ItemType)maxItem < *(ItemType)fetchIndexArray(a, i)) { \
             maxItem = (ItemType)fetchIndexArray(a, i);               \
         }                                                            \
+    }
+
+#define showArray(a, ItemType, i, startIndex, showType)  \
+    ArrayForEachItemStart(a, i, startIndex) {            \
+        ItemType Item = (ItemType)fetchIndexArray(a, i); \
+        if (showType == HEX) {                           \
+            printf("0x");                                \
+            if (i == a->size - 1)                        \
+                printf("%X\n", *Item);                   \
+            else                                         \
+                printf("%X ", *Item);                    \
+        } else {                                         \
+            if (i == a->size - 1)                        \
+                printf("%d\n", *Item);                   \
+            else                                         \
+                printf("%d ", *Item);                    \
+        }                                                \
     }
