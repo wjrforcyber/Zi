@@ -1,0 +1,1 @@
+ADD_LIBRARY( ziArray STATIC array.c )

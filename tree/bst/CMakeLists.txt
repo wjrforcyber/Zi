@@ -1,0 +1,1 @@
+ADD_LIBRARY( ziTree STATIC ${CMAKE_SOURCE_DIR}/tree/bst/bst.c ${CMAKE_SOURCE_DIR}/array/array.c)

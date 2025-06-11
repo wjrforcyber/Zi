@@ -1,0 +1,1 @@
+ADD_LIBRARY( ziUtil STATIC utilMatrix.c)
