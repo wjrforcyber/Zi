@@ -44,3 +44,15 @@ int showDigitsArray(ziArray* a);
         }                                            \
         *res = 0;                                    \
     }
+
+#define maxArray(a, ItemType, maxItem)                               \
+    if (a->size == 0) {                                              \
+        printf("No item in the array.\n");                           \
+        maxItem = NULL;                                              \
+    }                                                                \
+    maxItem = (ItemType)fetchIndexArray(a, 0);                       \
+    for (int i = 0; i < a->size; i++) {                              \
+        if (*(ItemType)maxItem < *(ItemType)fetchIndexArray(a, i)) { \
+            maxItem = (ItemType)fetchIndexArray(a, i);               \
+        }                                                            \
+    }

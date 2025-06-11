@@ -36,6 +36,10 @@ add_executable(arrayShowDigits arrayShowDigits.c)
 target_link_libraries(arrayShowDigits ziArray)
 add_test(NAME ArrayTestsShowDigits COMMAND arrayShowDigits)
 
+add_executable(arrayMax arrayMax.c)
+target_link_libraries(arrayMax ziArray)
+add_test(NAME ArrayTestsMax COMMAND arrayMax)
+
 add_executable(arrayProductIntArray arrayProductIntArray.c)
 target_link_libraries(arrayProductIntArray ziArray)
 add_test(NAME ArrayTestsProductIntArray COMMAND arrayProductIntArray)
