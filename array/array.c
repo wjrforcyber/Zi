@@ -140,13 +140,9 @@ int changeIndexArray(ziArray* a, int index, void* item) {
 ziArray* addArray(ziArray* a, ziArray* b) {
     ziArray* res = (ziArray*)malloc(sizeof(ziArray));
     initArray(res, 8);
-    // res->size = a->size;
+
     int* res_ini = (int*)malloc(sizeof(int) * a->size);
     memset(res_ini, 0, sizeof(int) * a->size);
-    // for(int i = 0; i < a->size; i++)
-    //{
-    //     pushArray(res, &res_ini[i]);
-    // }
 
     if (a->size != b->size) {
         printf("Two arrays have different size.\n");

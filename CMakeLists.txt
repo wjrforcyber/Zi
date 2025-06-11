@@ -23,5 +23,9 @@ include_directories(matrix)
 ADD_LIBRARY( ziTree STATIC tree/bst/bst.c array/array.c)
 include_directories(tree/bst)
 
+# set lib
+ADD_LIBRARY( ziSet STATIC set/set.c array/array.c)
+include_directories(set)
+
 include(CTest)
 add_subdirectory(test)
