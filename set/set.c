@@ -1,4 +1,5 @@
 #include "set.h"
+#include <stdlib.h>
 #include <string.h>
 
 //give limits on maximum memory cost on storing the data, on MegaBytes
@@ -71,6 +72,6 @@ int initSet( set* sData, ziArray *iData )
 //clear set
 int clearSet( set* sData)
 {
-    clearArray(sData->s);
+    clearExtendArray(sData->s);
     return 0;
 }
