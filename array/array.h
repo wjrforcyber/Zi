@@ -27,7 +27,6 @@ int changeIndexArray(ziArray* a, int index, void* item);
 ziArray* addArray(ziArray* a, ziArray* b);
 int productIntArray(ziArray* a, ziArray* b);
 int extendArray(ziArray* ori, ziArray* extra);
-int showDigitsArray(ziArray* a);
 
 enum ITEM_TYPE { HEX, DEC };
 

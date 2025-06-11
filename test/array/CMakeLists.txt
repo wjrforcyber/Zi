@@ -32,10 +32,6 @@ add_executable(arrayCheckIdentity arrayCheckIdentity.c)
 target_link_libraries(arrayCheckIdentity ziArray)
 add_test(NAME ArrayTestsCheckIdentity COMMAND arrayCheckIdentity)
 
-add_executable(arrayShowDigits arrayShowDigits.c)
-target_link_libraries(arrayShowDigits ziArray)
-add_test(NAME ArrayTestsShowDigits COMMAND arrayShowDigits)
-
 add_executable(arrayShow arrayShow.c)
 target_link_libraries(arrayShow ziArray)
 add_test(NAME ArrayTestsShow COMMAND arrayShow)

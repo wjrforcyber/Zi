@@ -185,22 +185,3 @@ int extendArray(ziArray* ori, ziArray* extra) {
     }
     return 0;
 }
-
-// show digits array
-int showDigitsArray(ziArray* a) {
-    if (a->size == 0) {
-        printf("Array size is 0, nothing to print.\n");
-        return 1;
-    }
-    printf("Warning: Only proper on int type.\n");
-    int index = 0;
-    printf("Array contains:\n");
-    for (index = 0; index < a->size; index++) {
-        if (index == a->size - 1) {
-            printf("%d\n", *(int*)fetchIndexArray(a, index));
-        } else {
-            printf("%d ", *(int*)fetchIndexArray(a, index));
-        }
-    }
-    return 0;
-}
