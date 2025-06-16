@@ -1,1 +1,1 @@
-ADD_LIBRARY( ziSet STATIC ${CMAKE_SOURCE_DIR}/set/set.c ${CMAKE_SOURCE_DIR}/array/array.c)
+ADD_LIBRARY( ziSet STATIC set.c )

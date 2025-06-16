@@ -1,1 +1,1 @@
-ADD_LIBRARY( ziMatrix STATIC matrix.c matrixCal.c ${CMAKE_SOURCE_DIR}/array/array.c ${CMAKE_SOURCE_DIR}/util/utilMatrix.c)
+ADD_LIBRARY( ziMatrix STATIC matrix.c matrixCal.c )

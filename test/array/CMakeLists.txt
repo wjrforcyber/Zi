@@ -1,4 +1,3 @@
-include_directories(${CMAKE_SOURCE_DIR}/array)
 
 add_executable(arrayInitAndClear arrayInitAndClear.c)
 target_link_libraries(arrayInitAndClear ziArray)
