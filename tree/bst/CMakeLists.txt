@@ -1,1 +1,0 @@
-ADD_LIBRARY( ziTree STATIC bst.c )

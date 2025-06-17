@@ -22,6 +22,7 @@ include_directories(matrix)
 # tree lib
 add_subdirectory(tree)
 include_directories(tree/bst)
+include_directories(tree/rbt)
 
 # set lib
 add_subdirectory(set)
