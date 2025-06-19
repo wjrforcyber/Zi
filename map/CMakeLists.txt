@@ -1,0 +1,1 @@
+ADD_LIBRARY( ziMap STATIC unmap.c )

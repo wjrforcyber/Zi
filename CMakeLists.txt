@@ -28,6 +28,10 @@ include_directories(tree/rbt)
 add_subdirectory(set)
 include_directories(set)
 
+# hash lib
+add_subdirectory(map)
+include_directories(map)
+
 if(ZI_TEST)
     include(CTest)
     add_subdirectory(test)
