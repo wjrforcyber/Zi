@@ -1,3 +1,5 @@
+#pragma once
+
 #include "array.h"
 typedef struct bstNode_ bstNode;
 typedef struct bstTree_ bstTree;

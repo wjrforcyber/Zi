@@ -1,3 +1,5 @@
+#pragma once
+
 #include "array.h"
 
 typedef struct matrix_ matrix;
