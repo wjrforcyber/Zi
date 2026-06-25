@@ -1,1 +1,1 @@
-ADD_LIBRARY( ziUtil STATIC utilMatrix.c)
+ADD_LIBRARY( ziUtil STATIC utilMatrix.c utilFile.c)
